@@ -1,7 +1,11 @@
+from expense import expense
+
+
 def main():
-    print(f" 🥳 Running Expense App")
+    print(f"🥳 Running Expense App")
     # Get input for expense
-    get_expenses()
+    expense = get_expenses()
+    print(expense)
     # Write expense to file 
     write_expense_to_file()
     # Read file and summarize 
@@ -11,7 +15,7 @@ def main():
 
 
 def get_expenses():
-    print(f" 🫡 Running get expense function")
+    print(f"🫡 Running get expense function")
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: "))
     print(f"You've entered the expense {expense_name}")
@@ -21,7 +25,7 @@ def get_expenses():
          "🏠 Housing", 
          "🚙 Transportation", 
          "🍔 Food", 
-         "🛠️ Utilities", 
+         "🔑 Utilities", 
          "💎 Misc"
      ]
    
@@ -33,13 +37,16 @@ def get_expenses():
         
         range_list = f"[1 - {len(expense_categories)}]"
         
-        selected_category = int(input(f"Please choose a category {range_list}"))
+        selected_category = int(input(f"Please choose a category {range_list}")) - 1
         
-        if selected_category <= len(expense_categories):
-            
-            break
-        
-        # NEED TO FIX FOR STR INPUTS ON THE CATEGORY USER SELECTES 
+        if selected_category in range(len(expense_categories)):
+            category = expense_categories[selected_category]
+            new_expense = expense(expense_name, category, expense_amount)
+            return new_expense
+        else: 
+            print("🛑 Invalid section, please try again")
+
+        # NEED TO FIX FOR STR INPUTS ON THE CATEGORY USER SELECTS 
      
    
 def write_expense_to_file():
