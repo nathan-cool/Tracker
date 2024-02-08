@@ -3,11 +3,11 @@ from expense import expense
 
 def main():
     print(f"🥳 Running Expense App")
+    expense_file_path = "expenses.csv"
     # Get input for expense
     expense = get_expenses()
-    print(expense)
     # Write expense to file 
-    write_expense_to_file()
+    write_expense_to_file(expense)
     # Read file and summarize 
     read_file_and_summarize()
     
@@ -49,12 +49,15 @@ def get_expenses():
         # NEED TO FIX FOR STR INPUTS ON THE CATEGORY USER SELECTS 
      
    
-def write_expense_to_file():
-    print(f" 😱 Running get write to file function")
+def write_expense_to_file(expense, expense_file_path):
+    print(f"Saving expense: {expense} to {expense_file_path}")
+    with open (expense_file_path, "a") as file:
+        file.write(expense)
     
     
     
-def read_file_and_summarize():
+    
+def read_file_and_summarize(expense_file_path):
     print(f" 🫥 Running get summarize function")
     
     
