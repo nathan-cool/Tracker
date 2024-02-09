@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "expensesproject-413814",
+  "private_key_id": "776967e70bc8b72bcf13fd907a840503005e2c43",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCnWk5h4kUAew29\nniKUrAhfEs9YESY3IfDgsabuz2tFC+7dc/QJH1O+R6i/PqmJn3D+DWExkJ/Awael\nFbfcCEh8lf6MYYqd8zdzv/WaO4R68mumbpX6rzDMBGo2pK7X5ZZbv6UuTswMRDxv\ngNvt0+EO3trqhqU+xfZk6mXZeKfPk9kYLn/723Q8tBjiYFLVUd+gAE99B+3F6KWr\npG2n9gkZKpeCSyBd/JMe9tIxPFyCFmqTZz4XJCSXwrGgBiYeEv0nSAThEps/dx9Z\nTuf7gA+ekx9oW76eaOU9tC0w613beqnbD51rnQFMKCGx2GnZtBn/vqTcgYTsyXpU\nt/+VG7kTAgMBAAECggEAFsV5c+U7eWDFEl+RmgQ8kV84WmXe+tKB+bkCm20azgbd\nJkHwW0tpdDNA+WDX5dONpuwAJSPmMO7I1nQ5k9WGs3kfbU+acnqVOYlNrIJbuPUC\ng995ReaPr7sMDspixhrF1k8h9UagiizAwnVYt6hEb+cQB6hxlLSQHdQtLqW1w89E\nPfvxw/q49FYX+6p+n04F4APZMHG3zsQZWFRTdZK5Y3xqIpZIKmKNszVY6Jqn4kGs\njQvdi6gbrW8gYk3HY5MBsxJqREo261CZVeQxYt2hF1uHpoV6Sxovj2kxRv9uSgKY\n6vzMh4apIXP4C/4tj+N5xc+H/8SypmS43Hs5HERsUQKBgQDjpzy8O3IsKls4EZdg\nG4OwF5gApejRr+dSdVAgp4FN5KOxaoaMDM/TF1JtwR3ntJeB5KFRzidIQR3UM21Y\n6SUOrE6xTDAPlO7XWyvy2lsVpAPlwuOJG6mbGt+N38hb6ffxuh5I1kag398qPpGf\nFf3PVS/Rhie0KJ63rbVivuQ28QKBgQC8MOggR0P6WBryXODwfgvfhg+14LoUl/7w\nasXueHZ7yLihmLIzAgWMJc/+7eZC8KzcZ2Tjf/yxdmLJB4qdT/XrNJgOMH65Jwlj\nqsiBm8EPmJAHXRC5NFyaQZVfxGf4J+LVmDdvEjXCpIyPA14sPT6ekgESqFzgDOpv\nBXSt/WbYQwKBgQC9BrL+lNmjZHQjpS+tJIt+3she2WPtIIMRy8kBpDRQiiWFfi9E\nAKtb2oSeD3kWWLRorX9pnqStcSwkc6M67TPQ8C/TNbC+b2q2NMTUPIze9jYqRF2M\nDgURfgncEtGZyDcRZvoYfptcnyb9O8DMeIUr787pydwT0pqfZ0QyPtDd8QKBgCPs\nOgMfV2yMMOierhl6Fg4e6xTOxvZzZSjDWPECcauDTysZmLp/4ks0VJXXF6Mjifuw\niOOcZMIDVSwGkoEg6FJzgasDuszhFLu/t/J1ps6xUpz1OOIBisOvTTIwraADDRu0\nqLA9C6ISAvqxq+JJ9pASUr4bAU+LZ5y1r+Yefuk9AoGAPmeUb6Wgq8MVLFcB0IPU\n7qJvvlb6LwXi13JLYtJ31CVdBNmNCOOKftDjWYjf2+f/sEH3iDzYJ5nvAowzOTiU\n6ZumUvhRXkKyjEylOR3mY5jOZvaZqaCVQa4r5bm1f6hqnQGoRtnueaEUZF+giaAy\nI0VK+rRBfBTMhhSeG2R2pXE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "nathan@expensesproject-413814.iam.gserviceaccount.com",
+  "client_id": "100594786653649063647",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nathan%40expensesproject-413814.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

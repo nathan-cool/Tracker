@@ -1,27 +1,25 @@
 from expense import expense
-import emoji 
+import gspread
+from google.oauth2.service_account import Credentials
 
-
-def main():
-    print(f"💶 Welcome to the Expense App 💶 ")
-
-    expense_file_path = "expenses.csv"
-    # Get input for expense
-    expense = get_expenses()
-    # Write expense to file 
-    write_expense_to_file(expense, expense_file_path)
-    # Read file and summarize 
-    read_file_and_summarize(expense_file_path)
-    
-
+SCOPE = [
+    'https://spreadsheets.google.com/feeds',
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive'
+]
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('Expenses')  
+WORKSHEET = SHEET.worksheet('Sheet1')   
 
 
 def get_expenses():
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: €"))
     print(f"You've entered the expense: {expense_name}")
-    print(f"Your expense amount was: €{expense_amount}")
-     
+    print(f"Your expensxe amount was: €{expense_amount}")
+
     expense_categories = [
          "Housing", 
          "Transportation", 
@@ -47,32 +45,26 @@ def get_expenses():
         else: 
             print("🛑 Invalid section, please try again")
 
-        # NEED TO FIX FOR STR INPUTS ON THE CATEGORY USER SELECTS 
-     
-   
-def write_expense_to_file(expense, expense_file_path):
-    print(f"Saving expense: {expense} to {expense_file_path}")
-    with open (expense_file_path, "a") as file:
-        file.write(f"{expense.name},{expense.amount},{expense.category}\n")
-    
-    
-    
-    
-def read_file_and_summarize(expense_file_path):
+
+def write_expense_to_sheet(expense): 
+    print(f"Saving expense: {expense} to Google Sheets")
+    WORKSHEET.append_row([expense.name, expense.amount, expense.category])
+
+
+def read_file_and_summarize():
+    all_data = WORKSHEET.get_all_records()
     expenses = []
-    with open (expense_file_path, "r") as file:
-        lines = file.readlines()
-        for line in lines:
-            expense_name, expense_amount, expense_category = line.strip().split(",")
 
-            line_expenses = expense(expense_name, float(expense_amount), expense_category)
-            expenses.append(line_expenses)
-            print(line_expenses)
-        print(expenses)
-            
-            
-            
+    for row in all_data:
+        expenses.append(expense(row['name'], float(row['amount']), row['category']))
 
+    print(expenses)
+
+
+def main():
+    print(f"💶 Welcome to the Expense App 💶 ") 
+    expense = get_expenses()
+    write_expense_to_sheet(expense)   
 
 if __name__ == "__main__":
     main()
