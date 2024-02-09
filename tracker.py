@@ -17,6 +17,7 @@ WORKSHEET = SHEET.worksheet('Sheet1')
 def get_expenses():
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: €"))
+    expense_date = input("please enter date of expense")
     print(f"You've entered the expense: {expense_name}")
     print(f"Your expensxe amount was: €{expense_amount}")
 
@@ -40,7 +41,7 @@ def get_expenses():
         
         if selected_category in range(len(expense_categories)):
             category = expense_categories[selected_category]
-            new_expense = expense(expense_name, category, expense_amount)
+            new_expense = expense(expense_name, category, expense_amount, expense_date)
             return new_expense
         else: 
             print("🛑 Invalid section, please try again")
@@ -48,7 +49,7 @@ def get_expenses():
 
 def write_expense_to_sheet(expense): 
     print(f"Saving expense: {expense} to Google Sheets")
-    WORKSHEET.append_row([expense.name, expense.amount, expense.category])
+    WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense.date])
 
 
 def read_file_and_summarize():
@@ -56,15 +57,38 @@ def read_file_and_summarize():
     expenses = []
 
     for row in all_data:
-        expenses.append(expense(row['name'], float(row['amount']), row['category']))
+        expenses.append(expense(row['name'], float(row['amount']), row['category'], row['date']))
 
     print(expenses)
 
 
+
+
+def home_screen_options():
+    home_screen = [
+        "View expenses",
+        "Create new expense",
+    ]
+
+    print(f"💶 Welcome to the Expense App 💶 ")
+    print(f"💶 Would you like to view past expenses or create a new expense? 💶 ")
+
+    while True:
+        print("Pick an option: ")
+        for i, option in enumerate(home_screen):
+            print(f"  {i + 1}. {option}")
+            
+        selected_option = int(input("Please choose an option (1 or 2): "))
+        if selected_option == 1:
+            expense = get_expenses()
+        elif selected_option == 2:
+            write_expense_to_sheet(expense)
+        else:
+            print("🛑 Invalid selection, please try again.")
+        
+
 def main():
-    print(f"💶 Welcome to the Expense App 💶 ") 
-    expense = get_expenses()
-    write_expense_to_sheet(expense)   
+    home_screen_options()
 
 if __name__ == "__main__":
     main()
