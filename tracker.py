@@ -27,9 +27,12 @@ def get_expenses():
     The function will ask for the expense's name, amount, date, and category.
     It supports entering 'T' for the current date and enforces a valid date format and category selection.
     """
+    set_budget()
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: €"))
     expense_date = input("please enter date of expense: ")
+    
+    
     while True:
         if expense_date.lower() == 't':
            expense_date = datetime.datetime.now().date()
@@ -87,7 +90,7 @@ def read_file_and_summarize():
                 "date": row["date"],
             }
             expenses.append(expense_entry)
-            total_expenses += expense_entry["amount"]
+            budget(total_expenses)
         except ValueError:
             print(f"Error converting amount in row: {row}")
 
@@ -110,7 +113,6 @@ def main():
     It provides the user with two options: view expenses or create a new expense.
     Handles user input to navigate through the app functionality.
     """
-    set_budget ()
     clear()
     home_screen = [
         "View expenses",
@@ -140,21 +142,19 @@ def main():
 def set_budget ():
     budget_input = input("Please enter a budget")
     
-    set_budget = "budget.csv"
-    
-    with open (set_budget, 'w') as file:
-        file.write(str(budget_input))
+    np.save("budget.npy", float(budget_input))
    
     
 
 def budget(current_spend):
-    set_budget = "budget.csv"
-    
-    with open (set_budget, 'r') as file:
-        last_saved = file.read()
-        if float(current_spend > last_saved):
-            print("Gone over budget")
-        else:
-            return 
+  
+    budget = np.load("budget.npy")
+        
+    if current_spend > budget:
+            print("The amount exceeds the budget.")
+    elif current_spend == budget:
+            print("The amount is exactly at the budget limit.")
+    else:
+            print("The amount is within the budget.")
 
 main()
