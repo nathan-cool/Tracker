@@ -6,7 +6,7 @@ class expense:
         self.date = date
 
     def __repr__(self):
-        return f"Expense(name={self.name}, amount={self.amount}, category={self.category}, date={self.date})"
+        return f"expense(name={self.name}, amount={self.amount}, category={self.category}, date={self.date})"
         
         
 

@@ -1,5 +1,6 @@
 from expense import expense
 import gspread
+import datetime
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -17,12 +18,19 @@ WORKSHEET = SHEET.worksheet("Sheet1")
 def get_expenses():
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: €"))
-    expense_date = input("please enter date of expense")
-    print(f"You've entered the expense: {expense_name}")
-    print(f"Your expensxe amount was: €{expense_amount}")
-
+    expense_date = input("please enter date of expense: ")
+    while True:
+        if expense_date.lower() == 't':
+           expense_date = datetime.datetime.now().date()
+        else:
+            try:
+                expense_date = datetime.datetime.strptime(expense_date, '%Y-%m-%d').date()
+            except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD or 'T'.")
+        break
+    
     expense_categories = ["Housing", "Transportation", "Food", "Utilities", "Misc"]
-
+    
     while True:
         print("Pick a category: ")
 
@@ -43,7 +51,8 @@ def get_expenses():
 
 def write_expense_to_sheet(expense):
     print(f"Saving expense: {expense} to Google Sheets")
-    WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense.date])
+    expense_date_str = expense.date.strftime('%Y-%m-%d')
+    WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense_date_str])
 
 
 def read_file_and_summarize():
@@ -70,7 +79,12 @@ def read_file_and_summarize():
     print("Total Expenses:", total_expenses)
 
 
-def home_screen_options():
+def clear():
+    print('\033c')
+
+
+def main():
+    clear()
     home_screen = [
         "View expenses",
         "Create new expense",
@@ -97,9 +111,4 @@ def home_screen_options():
             print("🛑 Invalid selection, please try again.")
 
 
-def main():
-    home_screen_options()
-
-
-if __name__ == "__main__":
-    main()
+main()
