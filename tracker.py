@@ -3,6 +3,7 @@ from expense import expense  # Presumably a custom module to manage expense obje
 import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
+import numpy as np
 
 # Define the scope needed for Google Sheets and Drive API access
 SCOPE = [
@@ -109,6 +110,7 @@ def main():
     It provides the user with two options: view expenses or create a new expense.
     Handles user input to navigate through the app functionality.
     """
+    set_budget ()
     clear()
     home_screen = [
         "View expenses",
@@ -135,12 +137,24 @@ def main():
         else:
             print("🛑 Invalid selection, please try again.")
             
-def budget (current_spend):
-    if current_spend > 68:
-        print("gone over budget")
-    else:
-        return 
+def set_budget ():
+    budget_input = input("Please enter a budget")
+    
+    set_budget = "budget.csv"
+    
+    with open (set_budget, 'w') as file:
+        file.write(str(budget_input))
+   
     
 
+def budget(current_spend):
+    set_budget = "budget.csv"
+    
+    with open (set_budget, 'r') as file:
+        last_saved = file.read()
+        if float(current_spend > last_saved):
+            print("Gone over budget")
+        else:
+            return 
 
 main()
