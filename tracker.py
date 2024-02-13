@@ -4,6 +4,7 @@ import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
 import numpy as np
+import pandas as pd
 
 # Define the scope needed for Google Sheets and Drive API access
 SCOPE = [
@@ -87,6 +88,7 @@ def read_file_and_summarize():
                 "amount": float(row["amount"]),
                 "category": row["category"],
                 "date": row["date"],
+                
             }
             expenses.append(expense_entry)
             budget(total_expenses)
@@ -97,9 +99,12 @@ def read_file_and_summarize():
     for expense in expenses:
         print(expense)
         total_expenses += expense_entry["amount"]
-    print("Total of expenses: € ", total_expenses)
+    print("Total of expenses: €", total_expenses)
     budget(total_expenses)
-    print(total_expenses)
+    
+    pd_total_expenses = pd.DataFrame(total_expenses)
+    
+    print(pd_total_expenses)
     
 
 def clear():
@@ -161,7 +166,6 @@ def budget(current_spend):
             print("The amount is exactly at the budget limit.")
     else:
             print("The amount is within the budget.")
-   
     print(f"€ {budget}")
     
 
