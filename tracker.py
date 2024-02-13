@@ -1,5 +1,5 @@
 # libraries
-from expense import expense  # Presumably a custom module to manage expense objects
+from expense import expense  # Custom module to manage expense objects
 import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
@@ -91,18 +91,15 @@ def read_file_and_summarize():
                 
             }
             expenses.append(expense_entry)
-            budget(total_expenses)
         except ValueError:
             print(f"Error converting amount in row: {row}")
 
     # Print each expense
     for expense in expenses:
-        print(expense)
         total_expenses += expense_entry["amount"]
     print("Total of expenses: €", total_expenses)
-    budget(total_expenses)
     
-    pd_total_expenses = pd.DataFrame(total_expenses)
+    pd_total_expenses = pd.DataFrame(expenses)
     
     print(pd_total_expenses)
     
@@ -129,28 +126,28 @@ def main():
 
     print("💶 Welcome to the Expense App 💶")
     print("💶 Would you like to view past expenses, create a new expense or set you budget? 💶")
-    try:
-        while True:
+
+    while True:
             print("Pick an option: ")
             for i, option in enumerate(home_screen):
                 print(f"  {i + 1}. {option}")
             
-            selected_option = int(input("Please choose an option [1][2][3]: "))
+            selected_option = input("Please choose an option [1][2][3]: ").strip()
             
-            if selected_option == 1:
+            if selected_option == '1':
                 read_file_and_summarize()
                 break
-            elif selected_option == 2:
+            elif selected_option == '2':
                 new_expense = get_expenses()
                 write_expense_to_sheet(new_expense)
-            elif selected_option == 3:
+            elif selected_option == '3':
                 set_budget ()
-    except ValueError:
-        print("Error: Invalid input. Please enter a number between 1 and 4.")
+            else:
+               print("Error: Invalid input. Please enter a number between 1 and 3")
 
             
 def set_budget ():
-    budget_input = input("Please enter a budget: € ")
+    budget_input = input("Please enter a budget:€")
     
     np.save("budget.npy", float(budget_input))
    
@@ -166,7 +163,7 @@ def budget(current_spend):
             print("The amount is exactly at the budget limit.")
     else:
             print("The amount is within the budget.")
-    print(f"€ {budget}")
+    print(f"€{budget}")
     
 
 main()
