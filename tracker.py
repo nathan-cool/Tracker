@@ -31,12 +31,18 @@ def get_expenses():
     expense_amount = float(input("Enter expense amount: €"))
     expense_date = input("please enter date of expense: ")
     
-    get_date(expense_date)
-        break
+    try:
+        if expense_date.lower() in ('t' , 'T'):
+           expense_date = datetime.datetime.now().date()
+        else:
+            expense_date = datetime.datetime.strptime(expense_date, '%Y-%m-%d').date()
+    except ValueError:
+                print("Invalid date format. Please use YYYY-MM-DD or 't'.")
+                
     
     expense_categories = ["Housing", "Transportation", "Food", "Utilities", "Misc"]
     
-    while True:
+    try:
         print("Pick a category: ")
 
         for i, category_name in enumerate(expense_categories):
@@ -52,6 +58,8 @@ def get_expenses():
             return new_expense
         else:
             print("🛑 Invalid section, please try again")
+    except ValueError:
+            print("Invalid date format. Please use YYYY-MM-DD or 't'.")
 
 def write_expense_to_sheet(expense):
     """
@@ -89,7 +97,7 @@ def read_file_and_summarize():
     for expense in expenses:
         print(expense)
         total_expenses += expense_entry["amount"]
-    print("Total Expenses:", total_expenses)
+    print("Total of expenses: € ", total_expenses)
     budget(total_expenses)
     print(total_expenses)
     
@@ -112,35 +120,32 @@ def main():
         "View expenses",
         "Create new expense",
         "Set budget"
-        "View current budget"
     ]
 
     print("💶 Welcome to the Expense App 💶")
-    print("💶 Would you like to view past expenses or create a new expense? 💶")
-try:
-    while True:
-        print("Pick an option: ")
-        for i, option in enumerate(home_screen):
-            print(f"  {i + 1}. {option}")
-
-        selected_option = int(input("Please choose an option [1][2][3][4]: \n"))
-
-        if selected_option == 1:
-            read_file_and_summarize()
-            break
-        elif selected_option == 2:
-            new_expense = get_expenses()
-            write_expense_to_sheet(new_expense)
-        elif selected_option == 3:
-            set_budget ()
-        elif selected_option == 4:
-            budget()
-except ValueError:
-    print("Error: Invalid input. Please enter a number between 1 and 4.")
+    print("💶 Would you like to view past expenses, create a new expense or set you budget? 💶")
+    try:
+        while True:
+            print("Pick an option: ")
+            for i, option in enumerate(home_screen):
+                print(f"  {i + 1}. {option}")
+            
+            selected_option = int(input("Please choose an option [1][2][3]: "))
+            
+            if selected_option == 1:
+                read_file_and_summarize()
+                break
+            elif selected_option == 2:
+                new_expense = get_expenses()
+                write_expense_to_sheet(new_expense)
+            elif selected_option == 3:
+                set_budget ()
+    except ValueError:
+        print("Error: Invalid input. Please enter a number between 1 and 4.")
 
             
 def set_budget ():
-    budget_input = input("Please enter a budget: €")
+    budget_input = input("Please enter a budget: € ")
     
     np.save("budget.npy", float(budget_input))
    
@@ -157,19 +162,8 @@ def budget(current_spend):
     else:
             print("The amount is within the budget.")
    
-    print(budget)
+    print(f"€ {budget}")
     
-def get_date(date):
-    try:
-        if expense_date.lower() == 't' | 'T':
-           expense_date = datetime.datetime.now().date()
-        else:
-                expense_date = datetime.datetime.strptime(expense_date, '%Y-%m-%d').date()
-                return
-    except ValueError:
-         print("Invalid date format. Please use YYYY-MM-DD or 't'.")
-         
-         
 
 main()
 
