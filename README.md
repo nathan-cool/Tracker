@@ -57,6 +57,10 @@ Allows users to input a budget amount, which the application then saves for futu
 
 This function compares the current spending (total expenses) against the set budget. It provides feedback based on the comparison, such as alerting the user if spending exceeds the budget, matches the budget, or is within acceptable limits. This feature is essential for financial planning and management, helping users stay within their financial means.
 
+## Support Functions
+
+Beyond the core functionalities, the application includes utility functions like clear() for improving user experience by clearing the console screen, and main(), which serves as the entry point of the application, orchestrating the flow of operations based on user input.
+
 # Core Functionalities
 
 # Expense Management
@@ -64,5 +68,11 @@ This function compares the current spending (total expenses) against the set bud
 # Budget Management
 
 # Usage
+
+## To utilize this application:
+
+Ensure all dependencies are installed and the creds.json file for Google Sheets API authentication is correctly configured.
+Run the script to initiate the application.
+Follow the on-screen prompts to navigate through the application's features.
 
 # Conclusion
