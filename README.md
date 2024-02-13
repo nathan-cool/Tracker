@@ -21,6 +21,14 @@ numpy: A powerful numerical processing library, utilized here for managing budge
 
 # Setup
 
+## Scope: 
+
+This defines the set of URLs through which an application can read and write to Google Sheets and manage files on Google Drive through the Google Sheets and Google Drive APIs.
+
+## Authentication: 
+
+Uses service account credentials for the application to talk to the services of Google securely.
+
 # Google Sheets API Access
 
 # Google Sheets Integration
