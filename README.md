@@ -29,8 +29,6 @@ This defines the set of URLs through which an application can read and write to 
 
 Uses service account credentials for the application to talk to the services of Google securely.
 
-# Google Sheets API Access
-
 ## Writing to Google Sheets:
 
 Appends the expense details in a formatted way to the given Google Sheet, which makes the data persistent.
@@ -39,7 +37,25 @@ Appends the expense details in a formatted way to the given Google Sheet, which 
 
 Fetches all expenses recorded, calculates the summary for comparison with the budgeted amount the expenses.
 
-# Google Sheets Integration
+## get_expenses(): 
+
+This function is the primary interface for users to input expense details. It prompts for the expense's name, amount, date, and category. It validates user input, supports a shortcut for the current date (using 't'), and ensures that the date format and category selection adhere to expected formats. After validation, it creates and returns an expense object with the provided details.
+
+## write_expense_to_sheet(expense): 
+
+After an expense object is created, this function formats the expense details into a suitable format (e.g., converting the date to 'YYYY-MM-DD') and appends the data as a new row in the specified Google Sheet worksheet. This process involves interacting with the Google Sheets API to update the worksheet dynamically.
+
+## read_file_and_summarize(): 
+
+This function fetches all expense records from the Google Sheet, calculates the total expenses, and prints a summary of individual expenses and the total amount spent. It handles data retrieval and summarization, providing insights into spending patterns and overall financial tracking.
+
+## set_budget(): 
+
+Allows users to input a budget amount, which the application then saves for future reference. This function is crucial for establishing a financial baseline against which expenses can be compared.
+
+## budget(current_spend): 
+
+This function compares the current spending (total expenses) against the set budget. It provides feedback based on the comparison, such as alerting the user if spending exceeds the budget, matches the budget, or is within acceptable limits. This feature is essential for financial planning and management, helping users stay within their financial means.
 
 # Core Functionalities
 
