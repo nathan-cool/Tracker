@@ -31,6 +31,14 @@ Uses service account credentials for the application to talk to the services of 
 
 # Google Sheets API Access
 
+## Writing to Google Sheets:
+
+Appends the expense details in a formatted way to the given Google Sheet, which makes the data persistent.
+
+## Reading from Google Sheets:
+
+Fetches all expenses recorded, calculates the summary for comparison with the budgeted amount the expenses.
+
 # Google Sheets Integration
 
 # Core Functionalities
