@@ -28,41 +28,55 @@ def get_expenses():
     The function will ask for the expense's name, amount, date, and category.
     It supports entering 'T' for the current date and enforces a valid date format and category selection.
     """
+    clear()
     expense_name = input("Enter expense name: ")
-    expense_amount = float(input("Enter expense amount: €"))
-    expense_date = input("please enter date of expense: ")
+        
+    while True:
+        try:
+            print('Please enter numeric values only')
+            expense_amount = float(input("Enter expense amount: €"))   
+            break
+        except ValueError:
+            print('Invalid entry. Please enter numeric values only. \n ')
+    clear()
+    while True:
+            try:
+                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: ")
+                if expense_date.lower() in ('t' , 'T'):
+                    expense_date = datetime.datetime.now().date()
+                else:
+                    expense_date = datetime.datetime.strptime(expense_date, '%d-%m-%Y').date()
+                break
+            except ValueError:
+                print("Invalid date format. Please use DD-MM-YYYY or 't'. \n ")
+    clear()                   
+    while True:
+            try:
+                expense_categories = ["Housing", "Transportation", "Food", "Utilities", "Misc"]
+                print("Pick a category: ")
+
+                for i, category_name in enumerate(expense_categories):
+                    print(f"  {i + 1}. {category_name}")
+
+                range_list = f"[1 - {len(expense_categories)}]"
+
+                selected_category = int(input(f"Please choose a category {range_list}: ")) - 1
     
-    try:
-        if expense_date.lower() in ('t' , 'T'):
-           expense_date = datetime.datetime.now().date()
-        else:
-            expense_date = datetime.datetime.strptime(expense_date, '%Y-%m-%d').date()
-    except ValueError:
-                print("Invalid date format. Please use YYYY-MM-DD or 't'.")
-                
+
+                if selected_category in range(len(expense_categories)):
+                        category = expense_categories[selected_category]
+                        new_expense = expense(expense_name, category, expense_amount, expense_date)
+                        return new_expense
+                else:
+                    print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.\n")
+            except ValueError:
+                clear()  
+                print("Invalid input. Please enter a number.\n")
+            
     
-    expense_categories = ["Housing", "Transportation", "Food", "Utilities", "Misc"]
-    
-    try:
-        print("Pick a category: ")
-
-        for i, category_name in enumerate(expense_categories):
-            print(f"  {i + 1}. {category_name}")
-
-        range_list = f"[1 - {len(expense_categories)}]"
-
-        selected_category = int(input(f"Please choose a category {range_list}: ")) - 1
-
-        if selected_category in range(len(expense_categories)):
-            category = expense_categories[selected_category]
-            new_expense = expense(expense_name, category, expense_amount, expense_date)
-            return new_expense
-        else:
-            print("🛑 Invalid section, please try again")
-    except ValueError:
-            print("Invalid date format. Please use YYYY-MM-DD or 't'.")
 
 def write_expense_to_sheet(expense):
+    clear()
     """
     Saves the given expense object to the Google Sheet.
     It formats the date to 'YYYY-MM-DD' before appending the expense data as a new row in the worksheet.
@@ -131,7 +145,8 @@ def budget(current_spend):
             print("The amount is within the budget.")
     print(f"€{budget}")
     
-    
+    clear()  
+
 def main():
     """
     The main function to run the expense application.
@@ -142,7 +157,8 @@ def main():
     home_screen = [
         "View expenses",
         "Create new expense",
-        "Set budget"
+        "Set budget",
+        "Exit"
     ]
 
     print("💶 Welcome to the Expense App 💶")
