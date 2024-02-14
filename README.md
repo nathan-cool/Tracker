@@ -21,7 +21,7 @@ As a user, I want to set a budget, so I can manage my spending against my financ
 - Data Analysis Features: Introduce expense categorization and monthly spending trends.
 - Mobile App Development: Expand accessibility with a smartphone application.
 
-# Libraries and Modules
+# Libraries and functions
 
 ## gpread: 
 
@@ -30,41 +30,6 @@ Provides a way to interact with Google Sheets, allowing operations such as readi
 ## datetime: 
 
 This helps in the storage of the date in relation to when the expense is incurred, hence enabling the application to process and store the date.
-
-## google.oauth2.service_account: 
-
-It helps in the authentication of any interactivity being undertaken in Google Sheets by the application through the service account in a secure fashion.
-numpy: A powerful numerical processing library, utilized here for managing budget calculations.
-
-# Skeleton
-CLI allows users to choose actions and input data as required.
-
-# Flowchart
-A flowchart 
-
-# Wireframe
-Wireframe could map out the command line
-
-# Surface
-The CLI's look and feel would be text-based, focusing on readability and ease of use.
-
-# Setup
-
-## Scope: 
-
-This defines the set of URLs through which an application can read and write to Google Sheets and manage files on Google Drive through the Google Sheets and Google Drive APIs.
-
-## Authentication: 
-
-Uses service account credentials for the application to talk to the services of Google securely.
-
-## Writing to Google Sheets:
-
-Appends the expense details in a formatted way to the given Google Sheet, which makes the data persistent.
-
-## Reading from Google Sheets:
-
-Fetches all expenses recorded, calculates the summary for comparison with the budgeted amount the expenses.
 
 ## get_expenses(): 
 
@@ -90,7 +55,28 @@ This function compares the current spending (total expenses) against the set bud
 
 Beyond the core functionalities, the application includes utility functions like clear() for improving user experience by clearing the console screen, and main(), which serves as the entry point of the application, orchestrating the flow of operations based on user input.
 
-# Core Functionalities
+## google.oauth2.service_account: 
+
+It helps in the authentication of any interactivity being undertaken in Google Sheets by the application through the service account in a secure fashion.
+numpy: A powerful numerical processing library, utilized here for managing budget calculations.
+
+# Skeleton
+CLI allows users to choose actions and input data as required.
+
+# Flowchart
+A flowchart 
+
+# Wireframe
+Wireframe could map out the command line
+
+# Surface
+The CLI's look and feel would be text-based, focusing on readability and ease of use.
+
+# Setup
+
+## Scope: 
+
+This defines the set of URLs through which an application can read and write to Google Sheets and manage files on Google Drive through the Google Sheets and Google Drive APIs.
 
 # Expense Management
 
