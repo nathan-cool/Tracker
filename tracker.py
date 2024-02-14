@@ -5,6 +5,7 @@ import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
 import numpy as np
 import pandas as pd
+import time
 
 # Define the scope needed for Google Sheets and Drive API access
 SCOPE = [
@@ -29,14 +30,14 @@ def get_expenses():
     It supports entering 'T' for the current date and enforces a valid date format and category selection.
     """
     clear()
-    expense_name = input("Enter expense name: ")
+    expense_name = input("Please enter expense description: ")
         
     while True:
         try:
-            print('Please enter numeric values only')
             expense_amount = float(input("Enter expense amount: €"))   
             break
         except ValueError:
+            clear()  
             print('Invalid entry. Please enter numeric values only. \n ')
     clear()
     while True:
@@ -48,6 +49,7 @@ def get_expenses():
                     expense_date = datetime.datetime.strptime(expense_date, '%d-%m-%Y').date()
                 break
             except ValueError:
+                clear()  
                 print("Invalid date format. Please use DD-MM-YYYY or 't'. \n ")
     clear()                   
     while True:
@@ -68,7 +70,9 @@ def get_expenses():
                         new_expense = expense(expense_name, category, expense_amount, expense_date)
                         return new_expense
                 else:
+                    clear() 
                     print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.\n")
+                    
             except ValueError:
                 clear()  
                 print("Invalid input. Please enter a number.\n")
@@ -84,6 +88,9 @@ def write_expense_to_sheet(expense):
     print(f"Saving expense: {expense} to Google Sheets")
     expense_date_str = expense.date.strftime('%Y-%m-%d')
     WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense_date_str])
+    time.sleep(0.15)
+    print("Expense saved")
+    
 
 def read_file_and_summarize():
     """
@@ -127,10 +134,20 @@ def clear():
     print('\033c')
             
 def set_budget ():
-    budget_input = input("Please enter a budget:€")
+    while True:
+        try:
+            clear()
+            budget_input = input("Please enter a budget:€")
+            
+            np.save("budget.npy", float(budget_input))
+            break
+        except ValueError:
+            clear()
+            print("Invalid input. Please enter a number.\n")
+            
+    clear()
+    print(f"Budget €{budget_input} saved...")
     
-    np.save("budget.npy", float(budget_input))
-   
     
 
 def budget(current_spend):
@@ -173,7 +190,6 @@ def main():
             
             if selected_option == '1':
                 read_file_and_summarize()
-                break
             elif selected_option == '2':
                 new_expense = get_expenses()
                 write_expense_to_sheet(new_expense)
