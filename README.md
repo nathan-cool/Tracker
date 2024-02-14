@@ -4,6 +4,12 @@
 
 This doc outlines the functionality of my Expense Tracker Application. The application, which is created for expense tracking, is nicely designed to provide a good user interface, store the expenses into Google Sheets, and also to perform some simple budgeting operations using custom as well as external libraries.
 
+## Leading User Stories
+
+· As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending.
+· As a user, I want to view a summary of my expenses, so I can understand my financial habits.
+· As a user, I want to set a budget, so I can manage my spending against my financial goals.
+
 # Libraries and Modules
 
 ## gpread: 
