@@ -94,10 +94,51 @@ Beyond the core functionalities, the application includes utility functions like
 
 # Usage
 
-## To utilize this application:
+## Documentation 
 
-Ensure all dependencies are installed and the creds.json file for Google Sheets API authentication is correctly configured.
-Run the script to initiate the application.
-Follow the on-screen prompts to navigate through the application's features.
+# Google Sheets API, spread, Pandas and Numpy:
+
+Google Developers documentation for learning to work with Google Sheets. This includes the Google Sheets API documentation.
+
+## Gspread GitHub Repository and Docs 
+
+These guides and examples on using the gspread library to access and edit information in Google Sheets within the context of the Python programming language.
+
+## Python Official Documentation 
+
+These guides and examples provide applications dealing with dates, offering insights into general Python syntax, data types, and functions.
+For data manipulation and analysis
+
+## Pandas Documentation 
+
+for summarizing expense data before presenting it to a user or analyzing expenses for budgeting purposes.
+
+## NumPy Documentation covers numerical operations
+
+## Stack Overflow and Developer Forums
+
+Gave me specific usage of gspread, datetime manipulation, handling Google Sheets API authentication, and data manipulation using pandas.
+For setting up authentication with Google's APIs
+
+## Google OAuth2 Documentation
+
+guided me on using service account credentials to securely authenticate your application.
+
+## Python tutorials:
+
+Documentation on virtual environments in Python like pip helps me manage project libraries and ensure consistent development environments.
+
+## Youtube tutorials 
+
+The YouTube tutorial here, helped me get the foundations down
+
+https://www.youtube.com/watch?v=HTD86h69PtE&t=2614s&pp=ygUTZXhwZW5zZSB0cmFja2VyIGFwcA%3D%3D
+
+## Repos
+
+Inspiration for certain functions such as the clear() function taken from here 
+
+elainebroche-dev/ms3-event-scheduler
+
 
 # Conclusion
