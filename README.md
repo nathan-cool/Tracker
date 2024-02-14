@@ -6,9 +6,16 @@ This doc outlines the functionality of my Expense Tracker Application. The appli
 
 ## Leading User Stories
 
-· As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending.
-· As a user, I want to view a summary of my expenses, so I can understand my financial habits.
-· As a user, I want to set a budget, so I can manage my spending against my financial goals.
+As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending. 
+As a user, I want to view a summary of my expenses, so I can understand my financial habits. 
+As a user, I want to set a budget, so I can manage my spending against my financial goals.
+
+# Strategic Opportunities Roadmap
+
+MVP Launch: Basic CLI for adding expenses and viewing summaries.
+Budget Management: Implement budget setting and tracking.
+Data Analysis Features: Introduce expense categorization and monthly spending trends.
+Mobile App Development: Expand accessibility with a smartphone application.
 
 # Libraries and Modules
 
@@ -24,6 +31,18 @@ This helps in the storage of the date in relation to when the expense is incurre
 
 It helps in the authentication of any interactivity being undertaken in Google Sheets by the application through the service account in a secure fashion.
 numpy: A powerful numerical processing library, utilized here for managing budget calculations.
+
+# Skeleton
+CLI allows users to choose actions and input data as required.
+
+# Flowchart
+A flowchart 
+
+# Wireframe
+Wireframe could map out the command line
+
+# Surface
+The CLI's look and feel would be text-based, focusing on readability and ease of use.
 
 # Setup
 
