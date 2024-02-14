@@ -10,12 +10,16 @@ As a user, I want to easily input my daily expenses, so I can keep accurate trac
 As a user, I want to view a summary of my expenses, so I can understand my financial habits. 
 As a user, I want to set a budget, so I can manage my spending against my financial goals.
 
+## Features
+- Add new expenses.
+- View a summary of expenses.
+- Set and view budgets.
+
 # Strategic Opportunities Roadmap
 
-MVP Launch: Basic CLI for adding expenses and viewing summaries.
-Budget Management: Implement budget setting and tracking.
-Data Analysis Features: Introduce expense categorization and monthly spending trends.
-Mobile App Development: Expand accessibility with a smartphone application.
+- Budget Management: Implement budget setting and tracking.
+- Data Analysis Features: Introduce expense categorization and monthly spending trends.
+- Mobile App Development: Expand accessibility with a smartphone application.
 
 # Libraries and Modules
 
@@ -94,9 +98,9 @@ Beyond the core functionalities, the application includes utility functions like
 
 # Usage
 
-## Documentation 
+# Documentation 
 
-# Google Sheets API, spread, Pandas and Numpy:
+## Google Sheets API, spread, Pandas and Numpy:
 
 Google Developers documentation for learning to work with Google Sheets. This includes the Google Sheets API documentation.
 
