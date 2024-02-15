@@ -23,6 +23,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Expenses")
 WORKSHEET = SHEET.worksheet("Sheet1")
 
+def clear():
+    """
+    Clears the console screen to make the app more user-friendly.
+    It uses an escape sequence to clear the console.
+    """
+    print('\033c')
+
 def get_expenses():
     """
     Prompts user to input expense details, validates the input, and returns a new expense object.
@@ -34,7 +41,7 @@ def get_expenses():
         
     while True:
         try:
-            expense_amount = float(input("Enter expense amount: €"))   
+            expense_amount = float(input("Enter expense amount: €").strip())
             break
         except ValueError:
             clear()  
@@ -42,7 +49,7 @@ def get_expenses():
     clear()
     while True:
             try:
-                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: ")
+                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: ").strip()
                 if expense_date.lower() in ('t' , 'T'):
                     expense_date = datetime.datetime.now().date()
                 else:
@@ -98,6 +105,7 @@ def read_file_and_summarize():
     and prints each expense and the total amount spent.
     Handles potential ValueError when converting the expense amount to float.
     """
+    clear()
     all_data = WORKSHEET.get_all_records()
     expenses = []
     total_expenses = 0.0
@@ -105,7 +113,7 @@ def read_file_and_summarize():
     for row in all_data:
         try:
             expense_entry = {
-                "name": row["name"],
+                "description": row["name"],
                 "amount": float(row["amount"]),
                 "category": row["category"],
                 "date": row["date"],
@@ -117,32 +125,27 @@ def read_file_and_summarize():
 
     # Print each expense
     for expense in expenses:
-        total_expenses += expense_entry["amount"]
+        total_expenses += expense["amount"]
     
     
     pd_total_expenses = pd.DataFrame(expenses)
     print(pd_total_expenses)
     print("----------------------------------------")
     print(f"Total of expenses: €{total_expenses}")
+    budget(total_expenses)
+    input("Press Enter to return to the main menu...") 
+    clear()
     
-
-def clear():
-    """
-    Clears the console screen to make the app more user-friendly.
-    It uses an escape sequence to clear the console.
-    """
-    print('\033c')
             
 def set_budget ():
     while True:
         try:
             clear()
-            budget_input = input("Please enter a budget:€")
+            budget_input = input("Please enter a budget:€").strip()
             
             np.save("budget.npy", float(budget_input))
             break
         except ValueError:
-            clear()
             print("Invalid input. Please enter a number.\n")
             
     clear()
@@ -160,9 +163,8 @@ def budget(current_spend):
             print("The amount is exactly at the budget limit.")
     else:
             print("The amount is within the budget.")
-    print(f"€{budget}")
+    print(f"Your current budget is €{budget}")
     
-    clear()  
 
 def main():
     """
@@ -202,7 +204,8 @@ def main():
                print("Error: Invalid input. Please enter a number between 1 and 3")    
     
 
-main()
+if __name__ == "__main__":
+    main()
 
 
     
