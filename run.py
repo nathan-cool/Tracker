@@ -6,6 +6,7 @@ from google.oauth2.service_account import Credentials  # For Google Sheets API a
 import numpy as np
 import pandas as pd
 import time
+from rich.console import Console
 
 # Define the scope needed for Google Sheets and Drive API access
 SCOPE = [
@@ -22,6 +23,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # Open the specific Google Sheet and worksheet
 SHEET = GSPREAD_CLIENT.open("Expenses")
 WORKSHEET = SHEET.worksheet("Sheet1")
+console = Console()
 
 def clear():
     """
@@ -45,7 +47,7 @@ def get_expenses():
             break
         except ValueError:
             clear()  
-            print('Invalid entry. Please enter numeric values only. \n ')
+            console.print('Invalid entry. Please enter numeric values only. \n ', style="bold red")
     clear()
     while True:
             try:
@@ -57,7 +59,7 @@ def get_expenses():
                 break
             except ValueError:
                 clear()  
-                print("Invalid date format. Please use DD-MM-YYYY or 't'. \n ")
+                console.print("Invalid date format. Please use DD-MM-YYYY or 't'. \n ", style="bold red")
     clear()                   
     while True:
             try:
@@ -78,11 +80,11 @@ def get_expenses():
                         return new_expense
                 else:
                     clear() 
-                    print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.\n")
+                    console.print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.\n" , style="bold red")
                     
             except ValueError:
                 clear()  
-                print("Invalid input. Please enter a number.\n")
+                console.print("Invalid input. Please enter a number.\n", style="bold red")
             
     
 
@@ -121,7 +123,7 @@ def read_file_and_summarize():
             }
             expenses.append(expense_entry)
         except ValueError:
-            print(f"Error converting amount in row: {row}")
+            console.print(f"Error converting amount in row: {row}", style="bold red")
 
     # Print each expense
     for expense in expenses:
@@ -146,7 +148,7 @@ def set_budget ():
             np.save("budget.npy", float(budget_input))
             break
         except ValueError:
-            print("Invalid input. Please enter a number.\n")
+            console.print("Invalid input. Please enter a number.\n", style="bold red")
             
     clear()
     print(f"Budget €{budget_input} saved...")
@@ -201,7 +203,7 @@ def main():
                 print('Goodbye')
                 break
             else:
-               print("Error: Invalid input. Please enter a number between 1 and 3")    
+               console.print("Error: Invalid input. Please enter a number between 1 and 3", style="bold red")   
     
 
 if __name__ == "__main__":
