@@ -39,11 +39,11 @@ def get_expenses():
     It supports entering 'T' for the current date and enforces a valid date format and category selection.
     """
     clear()
-    expense_name = input("Please enter expense description: ")
+    expense_name = input("Please enter expense description: /n")
         
     while True:
         try:
-            expense_amount = float(input("Enter expense amount: €").strip())
+            expense_amount = float(input("Enter expense amount: € \n").strip())
             break
         except ValueError:
             clear()  
@@ -51,7 +51,7 @@ def get_expenses():
     clear()
     while True:
             try:
-                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: ").strip()
+                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: \n").strip()
                 if expense_date.lower() in ('t' , 'T'):
                     expense_date = datetime.datetime.now().date()
                 else:
@@ -71,7 +71,7 @@ def get_expenses():
 
                 range_list = f"[1 - {len(expense_categories)}]"
 
-                selected_category = int(input(f"Please choose a category {range_list}: ")) - 1
+                selected_category = int(input(f"Please choose a category {range_list}: \n")) - 1
     
 
                 if selected_category in range(len(expense_categories)):
@@ -135,7 +135,7 @@ def read_file_and_summarize():
     print("----------------------------------------")
     print(f"Total of expenses: €{total_expenses}")
     budget(total_expenses)
-    input("Press Enter to return to the main menu...") 
+    input("Press Enter to return to the main menu...\n") 
     clear()
     
             
@@ -143,7 +143,7 @@ def set_budget ():
     while True:
         try:
             clear()
-            budget_input = input("Please enter a budget:€").strip()
+            budget_input = input("Please enter a budget:€ \n").strip()
             
             np.save("budget.npy", float(budget_input))
             break
@@ -190,7 +190,7 @@ def main():
             for i, option in enumerate(home_screen):
                 print(f"  {i + 1}. {option}")
             
-            selected_option = input("Please choose an option [1][2][3][4]: ").strip()
+            selected_option = input("Please choose an option [1][2][3][4]: \n").strip()
             
             if selected_option == '1':
                 read_file_and_summarize()
