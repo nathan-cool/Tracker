@@ -4,7 +4,7 @@ import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
 import numpy as np
-
+import pandas as pd
 import time
 from rich.console import Console
 
@@ -129,7 +129,7 @@ def read_file_and_summarize():
     # Print each expense
     for expense in expenses:
         total_expenses += expense["AMOUNT"]
-    
+        
     
     pd_total_expenses = pd.DataFrame(expenses)
     print(pd_total_expenses)
