@@ -4,7 +4,7 @@ import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
 import numpy as np
-import pandas as pd
+
 import time
 from rich.console import Console
 
@@ -111,14 +111,15 @@ def read_file_and_summarize():
     all_data = WORKSHEET.get_all_records()
     expenses = []
     total_expenses = 0.0
+    row = 0 
 
     for row in all_data:
         try:
             expense_entry = {
-                "description": row["name"],
-                "amount": float(row["amount"]),
-                "category": row["category"],
-                "date": row["date"],
+                "DESC": row["name"],
+                "AMOUNT": float(row["amount"]),
+                "CATEGORY": row["category"],
+                "DATE": row["date"],
                 
             }
             expenses.append(expense_entry)
@@ -127,31 +128,38 @@ def read_file_and_summarize():
 
     # Print each expense
     for expense in expenses:
-        total_expenses += expense["amount"]
+        total_expenses += expense["AMOUNT"]
     
     
     pd_total_expenses = pd.DataFrame(expenses)
     print(pd_total_expenses)
     print("----------------------------------------")
     print(f"Total of expenses: €{total_expenses}")
+    print("\n")
     budget(total_expenses)
+    print("\n")
     input("Press Enter to return to the main menu...\n") 
     clear()
     
             
 def set_budget ():
+    clear()
     while True:
+        print("To set your new budget, please enter a numerical value and press enter.")
+        print("\n")
         try:
-            clear()
+
             budget_input = input("Please enter a budget:€ \n").strip()
             
             np.save("budget.npy", float(budget_input))
             break
         except ValueError:
+            clear()
             console.print("Invalid input. Please enter a number.\n", style="bold red")
-            
+    
     clear()
-    print(f"Budget €{budget_input} saved...")
+    console.print(f"Budget €{budget_input} saved...", style="green")
+    
     
     
 
@@ -160,11 +168,11 @@ def budget(current_spend):
     budget = np.load("budget.npy")
         
     if current_spend > budget:
-            print("The amount exceeds the budget.")
+            console.print("The amount exceeds the budget.", style="red")
     elif current_spend == budget:
-            print("The amount is exactly at the budget limit.")
+            console.print("The amount is exactly at the budget limit.", style="orange")
     else:
-            print("The amount is within the budget.")
+            console.print("The amount is within the budget.", style="green")
     print(f"Your current budget is €{budget}")
     
 
@@ -176,21 +184,25 @@ def main():
     """
     clear()
     home_screen = [
-        "View expenses",
-        "Create new expense",
-        "Set budget",
+        "View Expenses",
+        "Create New Expense",
+        "Set Budget",
         "Exit"
     ]
 
-    print("💶 Welcome to the Expense App 💶")
-    print("💶 Would you like to view past expenses, create a new expense or set you budget? 💶")
 
     while True:
+            print("Main Menu For Expense Tracker App")
+            print("\n")
+            print("Would you like to view past expenses, create a new expense or set you budget?")
+            print("\n")
             print("Pick an option: ")
+            print("\n")
             for i, option in enumerate(home_screen):
                 print(f"  {i + 1}. {option}")
-            
-            selected_option = input("Please choose an option [1][2][3][4]: \n").strip()
+            print('\n')
+            print("Please choose an option between 1 - 4:")
+            selected_option = input("Please enter your option here:\n")
             
             if selected_option == '1':
                 read_file_and_summarize()
@@ -203,7 +215,7 @@ def main():
                 print('Goodbye')
                 break
             else:
-               console.print("Error: Invalid input. Please enter a number between 1 and 3", style="bold red")   
+               console.print("Error: Invalid input. Please enter a number between 1 - 4", style="bold red")   
     
 
 if __name__ == "__main__":
