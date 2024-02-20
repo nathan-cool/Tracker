@@ -1,5 +1,5 @@
 # libraries
-from expense import expense  # A custom module to manage expense objects
+from Expense import Expense  # A custom module to manage expense objects
 import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
 from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
@@ -76,7 +76,7 @@ def get_expenses():
 
                 if selected_category in range(len(expense_categories)):
                         category = expense_categories[selected_category]
-                        new_expense = expense(expense_name, category, expense_amount, expense_date)
+                        new_expense = Expense(expense_name, category, expense_amount, expense_date)
                         return new_expense
                 else:
                     clear() 
@@ -95,8 +95,8 @@ def write_expense_to_sheet(expense):
     """
     clear()
     print(f"Saving expense: {expense} to Google Sheets")
-    expense_date_str = expense.date.strftime('%Y-%m-%d')
-    WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense_date_str])
+    expense_date_str = Expense.date.strftime('%Y-%m-%d')
+    WORKSHEET.append_row([Expense.name, Expense.amount, Expense.category, expense_date_str])
     time.sleep(0.15)
     print("Expense saved")
     
@@ -142,28 +142,23 @@ def read_file_and_summarize():
     clear()
     
             
-def set_budget ():
-     """
+def set_budget():
+    """
     Prompts the user to set a new budget and saves it to a file.
     """
-    clear()
     while True:
         print("To set your new budget, please enter a numerical value and press enter.")
         print("\n")
         try:
-
             budget_input = input("Please enter a budget:€ \n").strip()
             
-            np.save("budget.npy", float(budget_input))
-            break
+            np.save("budget.npy", float(budget_input)) 
+            clear()  
+            console.print(f"Budget €{budget_input} saved...", style="green")
+            break  
         except ValueError:
-            clear()
+            clear()  
             console.print("Invalid input. Please enter a number.\n", style="bold red")
-    
-    clear()
-    console.print(f"Budget €{budget_input} saved...", style="green")
-    
-    
     
 
 def budget(current_spend):
