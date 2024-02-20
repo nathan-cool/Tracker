@@ -43,7 +43,7 @@ def get_expenses():
         
     while True:
         try:
-            expense_amount = float(input("Enter expense amount: € \n").strip())
+            expense_amount = float(input("Enter expense amount: €").strip())
             break
         except ValueError:
             clear()  
@@ -51,7 +51,7 @@ def get_expenses():
     clear()
     while True:
             try:
-                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date: \n").strip()
+                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date:").strip()
                 if expense_date.lower() in ('t' , 'T'):
                     expense_date = datetime.datetime.now().date()
                 else:
@@ -59,7 +59,7 @@ def get_expenses():
                 break
             except ValueError:
                 clear()  
-                console.print("Invalid date format. Please use DD-MM-YYYY or 't'. \n ", style="bold red")
+                console.print("Invalid date format. Please use DD-MM-YYYY or 't'.", style="bold red")
     clear()                   
     while True:
             try:
@@ -89,11 +89,11 @@ def get_expenses():
     
 
 def write_expense_to_sheet(expense):
-    clear()
     """
     Saves the given expense object to the Google Sheet.
     It formats the date to 'YYYY-MM-DD' before appending the expense data as a new row in the worksheet.
     """
+    clear()
     print(f"Saving expense: {expense} to Google Sheets")
     expense_date_str = expense.date.strftime('%Y-%m-%d')
     WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense_date_str])
@@ -143,6 +143,9 @@ def read_file_and_summarize():
     
             
 def set_budget ():
+     """
+    Prompts the user to set a new budget and saves it to a file.
+    """
     clear()
     while True:
         print("To set your new budget, please enter a numerical value and press enter.")
@@ -164,17 +167,18 @@ def set_budget ():
     
 
 def budget(current_spend):
+    """
+    Compares the current spend against the saved budget and prints a message indicating the status.
+    """
   
     budget = np.load("budget.npy")
         
     if current_spend > budget:
-            console.print("The amount exceeds the budget.", style="red")
+            console.print(f"The amount exceeds the budget of {budget}", style="red")
     elif current_spend == budget:
-            console.print("The amount is exactly at the budget limit.", style="orange")
+            console.print(f"The amount is exactly at the budget limit of {budget}", style="orange")
     else:
-            console.print("The amount is within the budget.", style="green")
-    print(f"Your current budget is €{budget}")
-    
+            console.print(f"The amount is within the budget of {budget}", style="green")
 
 def main():
     """
