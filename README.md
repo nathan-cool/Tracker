@@ -64,7 +64,7 @@ numpy: A powerful numerical processing library, utilized here for managing budge
 CLI allows users to choose actions and input data as required.
 
 # Flowchart
-A flowchart 
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/698e7455-0b2f-43ee-a56d-fc39f6d738de)
 
 # Wireframe
 Wireframe could map out the command line
