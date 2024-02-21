@@ -1,6 +1,9 @@
-# Expense Tracker 
+<h1 align="center">Expense Tracker</h1>
 
-https://expenesestracker-8fe77bed1a01.herokuapp.com/
+[Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/8f548bae-7772-48ed-8e8e-022259c12f8a)
+
 
 ## Overview
 
