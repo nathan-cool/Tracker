@@ -26,6 +26,12 @@ As a user, I want to set a budget, so I can manage my spending against my financ
 - Data Analysis Features: Introduce expense categorization and monthly spending trends.
 - Mobile App Development: Expand accessibility with a smartphone application.
 
+# Errors on issues 
+
+- During the development of my application, I accidentally uploaded the creds.json file, which contained sensitive information. Upon realizing the mistake, immediate action was taken to rectify the issue. The file was quickly removed from the repository, and the commit history was purged to ensure that the sensitive information was no longer accessible. I also made sure to look at my .gitignore rules to prevent such incidents in the future. 
+
+- During the deployment to Heroku, I encountered a challenge related to our requirements.txt file. I discovered that the file was incorrect and did not include several dependencies needed for the application to function properly. This oversight led to deployment failures on Heroku. To address this, I conducted a review of our application's dependencies and updated the requirements.txt file accordingly. This is still something I am working on to get a better understanding on what files are needed and not 
+
 # Libraries and functions
 
 ## gpread: 
