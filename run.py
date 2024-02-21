@@ -28,7 +28,7 @@ console = Console()
 def clear():
     """
     Clears the console screen to make the app more user-friendly.
-    It uses an escape sequence to clear the console.
+    It uses an escape sequence to clear the console
     """
     print('\033c')
 
