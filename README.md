@@ -30,7 +30,15 @@ As a user, I want to set a budget, so I can manage my spending against my financ
 
 - During the development of my application, I accidentally uploaded the creds.json file, which contained sensitive information. Upon realizing the mistake, immediate action was taken to rectify the issue. The file was quickly removed from the repository, and the commit history was purged to ensure that the sensitive information was no longer accessible. I also made sure to look at my .gitignore rules to prevent such incidents in the future. 
 
-- During the deployment to Heroku, I encountered a challenge related to our requirements.txt file. I discovered that the file was incorrect and did not include several dependencies needed for the application to function properly. This oversight led to deployment failures on Heroku. To address this, I conducted a review of our application's dependencies and updated the requirements.txt file accordingly. This is still something I am working on to get a better understanding on what files are needed and not 
+- During the deployment to Heroku, I encountered a challenge related to our requirements.txt file. I discovered that the file was incorrect and did not include several dependencies needed for the application to function properly. This oversight led to deployment failures on Heroku. To address this, I conducted a review of our application's dependencies and updated the requirements.txt file accordingly. This is still something I am working on to get a better understanding on what files are needed and not
+
+# CI Python Linter
+- Run.py
+<img width="1239" alt="Screenshot 2024-02-21 at 21 01 42" src="https://github.com/nathan-cool/Tracker/assets/127421398/488f24c8-fc51-499d-8c65-973a635698d3">
+-Expenses.py
+<img width="1203" alt="Screenshot 2024-02-21 at 21 03 50" src="https://github.com/nathan-cool/Tracker/assets/127421398/1ce0affd-c864-4776-882a-f8fb76c90f47">
+
+
 
 # Libraries and functions
 
