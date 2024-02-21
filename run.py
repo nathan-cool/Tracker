@@ -2,11 +2,11 @@
 from Expense import expense  # A custom module to manage expense objects
 import gspread  # For interacting with Google Sheets
 import datetime  # For handling dates
-from google.oauth2.service_account import Credentials  # For Google Sheets API authentication
-import numpy as np
+from google.oauth2.service_account import Credentials  # API authentication
+import numpy as np  # Handle numerical operations
 import pandas as pd
-import time
-from rich.console import Console
+import time   # Time access and conversions
+from rich.console import Console  # formatting in the terminal
 
 # Define the scope needed for Google Sheets and Drive API access
 SCOPE = [
@@ -25,95 +25,97 @@ SHEET = GSPREAD_CLIENT.open("Expenses")
 WORKSHEET = SHEET.worksheet("Sheet1")
 console = Console()
 
+
 def clear():
-    """
-    Clears the console screen to make the app more user-friendly.
-    It uses an escape sequence to clear the console
-    """
+    """Clear the console screen to make the app more user-friendly."""
     print('\033c')
 
+
 def get_expenses():
-    """
-    Prompts user to input expense details, validates the input, and returns a new expense object.
-    The function will ask for the expense's name, amount, date, and category.
-    It supports entering 'T' for the current date and enforces a valid date format and category selection.
-    """
+    """Prompt user for expense details, validate input,
+    and return a new expense object."""
     clear()
     expense_name = input("Please enter expense description:")
-        
+
     while True:
         try:
             expense_amount = float(input("Enter expense amount: €").strip())
             break
         except ValueError:
-            clear()  
-            console.print('Invalid entry. Please enter numeric values only. \n ', style="bold red")
+            clear()
+            console.print('Invalid entry. Please enter numeric values only.',
+                          style="bold red")
     clear()
     while True:
-            try:
-                expense_date = input("Please use DD-MM-YYYY or press 't' for todays date:").strip()
-                if expense_date.lower() in ('t' , 'T'):
-                    expense_date = datetime.datetime.now().date()
-                else:
-                    expense_date = datetime.datetime.strptime(expense_date, '%d-%m-%Y').date()
-                break
-            except ValueError:
-                clear()  
-                console.print("Invalid date format. Please use DD-MM-YYYY or 't'.", style="bold red")
-    clear()                   
+        try:
+            expense_date = input("Please use DD-MM-YYYY or press 't' for"
+                                 "todays date:").strip()
+            if expense_date.lower() in ('t', 'T'):
+                expense_date = datetime.datetime.now().date()
+            else:
+                expense_date = datetime.datetime.strptime
+                (expense_date, '%d-%m-%Y').date()
+
+            break
+        except ValueError:
+            clear()
+            console.print("Invalid date format."
+                          "Please use DD-MM-YYYY or 't'.", style="bold red")
+    clear()
     while True:
-            try:
-                expense_categories = ["Housing", "Transportation", "Food", "Utilities", "Misc"]
-                print("Pick a category: ")
+        try:
+            expense_categories = ["Housing", "Transportation", "Food",
+                                  "Utilities", "Misc"]
+            print("Pick a category: ")
 
-                for i, category_name in enumerate(expense_categories):
-                    print(f"  {i + 1}. {category_name}")
+            for i, category_name in enumerate(expense_categories):
+                print(f"  {i + 1}. {category_name}")
 
-                range_list = f"[1 - {len(expense_categories)}]"
+            range_list = f"[1 - {len(expense_categories)}]"
 
-                selected_category = int(input(f"Please choose a category {range_list}: \n")) - 1
-    
+            selected_category = int(input(f"Please choose a"
+                                          "category {range_list}: ")) - 1
 
-                if selected_category in range(len(expense_categories)):
-                        category = expense_categories[selected_category]
-                        new_expense = expense(expense_name, category, expense_amount, expense_date)
-                        return new_expense
-                else:
-                    clear() 
-                    console.print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.\n" , style="bold red")
-                    
-            except ValueError:
-                clear()  
-                console.print("Invalid input. Please enter a number.\n", style="bold red")
-            
-    
+            if selected_category in range(len(expense_categories)):
+                category = expense_categories[selected_category]
+                new_expense = expense(expense_name, category,
+                                      expense_amount, expense_date)
+
+                return new_expense
+            else:
+                clear()
+                console.print(f"Invalid selection."
+                              "Please choose a number"
+                              "between 1 and {len(expense_categories)}.",
+                              style="bold red")
+        except ValueError:
+            clear()
+            console.print("Invalid input. Please enter a number.",
+                          style="bold red")
+
 
 def write_expense_to_sheet(expense):
-    """
-    Saves the given expense object to the Google Sheet.
-    It formats the date to 'YYYY-MM-DD' before appending the expense data as a new row in the worksheet.
-    """
+    """Save the given expense object to the Google Sheet."""
     clear()
     print(f"Saving expense: {expense} to Google Sheets")
     expense_date_str = expense.date.strftime('%Y-%m-%d')
-    WORKSHEET.append_row([expense.name, expense.amount, expense.category, expense_date_str])
+    WORKSHEET.append_row([expense.name, expense.amount, expense.category,
+                         expense_date_str])
+
     time.sleep(0.15)
     print("\n")
     console.print("Expense saved", style="green")
     print("\n")
-    
+
 
 def read_file_and_summarize():
-    """
-    Fetches all expense records from the Google Sheet, calculates the total expenses,
-    and prints each expense and the total amount spent.
-    Handles potential ValueError when converting the expense amount to float.
-    """
+    """Fetch expense records from Google Sheet, calculate total,
+    and print summary."""
     clear()
     all_data = WORKSHEET.get_all_records()
     expenses = []
     total_expenses = 0.0
-    row = 0 
+    row = 0
 
     for row in all_data:
         try:
@@ -121,18 +123,15 @@ def read_file_and_summarize():
                 "DESC": row["name"],
                 "AMOUNT": float(row["amount"]),
                 "CATEGORY": row["category"],
-                "DATE": row["date"],
-                
-            }
+                "DATE": row["date"]}
             expenses.append(expense_entry)
         except ValueError:
-            console.print(f"Error converting amount in row: {row}", style="bold red")
+            console.print(f"Error converting amount in row: {row}",
+                          style="bold red")
 
     # Print each expense
     for expense in expenses:
         total_expenses += expense["AMOUNT"]
-        
-    
     pd_total_expenses = pd.DataFrame(expenses)
     print(pd_total_expenses)
     print("----------------------------------------")
@@ -140,48 +139,51 @@ def read_file_and_summarize():
     print("\n")
     budget(total_expenses)
     print("\n")
-    input("Press Enter to return to the main menu...\n") 
+    input("Press Enter to return to the main menu...\n")
     clear()
-    
-            
+
+
 def set_budget():
-    """
-    Prompts the user to set a new budget and saves it to a file.
-    """
+    """Prompts the user to set a new budget and saves it to a file."""
     while True:
-        print("To set your new budget, please enter a numerical value and press enter.")
+        print("To set your new budget, please enter"
+              "a numerical value and press enter.")
         print("\n")
         try:
             budget_input = input("Please enter a budget:€").strip()
-            
-            np.save("budget.npy", float(budget_input)) 
-            clear()  
+
+            np.save("budget.npy", float(budget_input))
+            clear()
             console.print(f"Budget €{budget_input} saved...", style="green")
-            break  
+            break
         except ValueError:
-            clear()  
-            console.print("Invalid input. Please enter a number.\n", style="bold red")
-    
+            clear()
+            console.print("Invalid input. Please enter a number.\n",
+                          style="bold red")
+
 
 def budget(current_spend):
-    """
-    Compares the current spend against the saved budget and prints a message indicating the status.
-    """
-  
+    """Compares the current spend against the saved budget and prints
+    a message indicating the status."""
+
     budget = np.load("budget.npy")
-        
+
     if current_spend > budget:
-            console.print(f"The amount exceeds the budget of {budget}", style="red")
+        console.print(f"The amount exceeds the budget of {budget}",
+                      style="red")
     elif current_spend == budget:
-            console.print(f"The amount is exactly at the budget limit of {budget}", style="orange")
+        console.print(f"The amount is exactly at the budget limit of {budget}",
+                      style="orange")
     else:
-            console.print(f"The amount is within the budget of {budget}", style="green")
+        console.print(f"The amount is within the budget of {budget}",
+                      style="green")
+
 
 def main():
     """
     The main function to run the expense application.
-    It provides the user with two options: view expenses or create a new expense.
-    Handles user input to navigate through the app functionality.
+    It provides the user with two options:view expenses or create a new
+    expense. Handles user input to navigate through the app functionality.
     """
     clear()
     home_screen = [
@@ -191,36 +193,35 @@ def main():
         "Exit"
     ]
 
-
     while True:
-            print("Main Menu For Expense Tracker App")
-            print("\n")
-            print("Would you like to view past expenses, create a new expense or set you budget?")
-            print("\n")
-            print("Pick an option: ")
-            print("\n")
-            for i, option in enumerate(home_screen):
-                print(f"  {i + 1}. {option}")
-            print('\n')
-            print("Please choose an option between 1 - 4:")
-            selected_option = input("Please enter your option here:\n")
-            
-            if selected_option == '1':
-                read_file_and_summarize()
-            elif selected_option == '2':
-                new_expense = get_expenses()
-                write_expense_to_sheet(new_expense)
-            elif selected_option == '3':
-                set_budget ()
-            elif selected_option == '4':
-                print('Goodbye')
-                break
-            else:
-               console.print("Error: Invalid input. Please enter a number between 1 - 4", style="bold red")   
-    
+        print("Main Menu For Expense Tracker App")
+        print("\n")
+        print("Would you like to view past expenses,"
+              "create a new expense or set you budget?")
+        print("\n")
+        print("Pick an option: ")
+        print("\n")
+        for i, option in enumerate(home_screen):
+            print(f"  {i + 1}. {option}")
+        print('\n')
+        print("Please choose an option between 1 - 4:")
+        selected_option = input("Please enter your option here:\n")
+
+        if selected_option == '1':
+            read_file_and_summarize()
+        elif selected_option == '2':
+            new_expense = get_expenses()
+            write_expense_to_sheet(new_expense)
+        elif selected_option == '3':
+            set_budget()
+        elif selected_option == '4':
+            print('Goodbye')
+            break
+        else:
+            console.print("Error: Invalid input. Please enter a number"
+                          "between 1 - 4", style="bold red")
+
 
 if __name__ == "__main__":
+
     main()
-
-
-    
