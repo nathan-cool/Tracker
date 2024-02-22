@@ -97,11 +97,6 @@ The CLI's look and feel would be text-based, focusing on readability and ease of
 
 This defines the set of URLs through which an application can read and write to Google Sheets and manage files on Google Drive through the Google Sheets and Google Drive APIs.
 
-# Expense Management
-
-# Budget Management
-
-# Usage
 
 # Documentation 
 
@@ -131,7 +126,7 @@ For setting up authentication with Google's APIs
 
 ## Google OAuth2 Documentation
 
-guided me on using service account credentials to securely authenticate your application.
+Guided me on using service account credentials to securely authenticate your application.
 
 ## Python tutorials:
 
@@ -148,6 +143,3 @@ https://www.youtube.com/watch?v=HTD86h69PtE&t=2614s&pp=ygUTZXhwZW5zZSB0cmFja2VyI
 Inspiration for certain functions such as the clear() function taken from here 
 
 elainebroche-dev/ms3-event-scheduler
-
-
-# Conclusion
