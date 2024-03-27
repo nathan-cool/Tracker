@@ -1,145 +1,118 @@
-<h1 align="center">Expense Tracker</h1>
+# Expense Tracker
 
-[Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
+This Expense Tracker Application is designed to help users track their expenses, store them in Google Sheets, and perform simple budgeting operations using custom and external libraries. The application provides a user-friendly interface for easy expense management.
+
+## Table of Contents
+- [Demo](#demo)
+- [Features](#features)
+- [User Stories](#user-stories)
+- [Future Enhancements](#future-enhancements)
+- [Error Handling](#error-handling)
+- [CI Python Linter](#ci-python-linter)
+- [Libraries and Functions](#libraries-and-functions)
+- [Setup](#setup)
+- [Documentation](#documentation)
+- [Inspiration and Resources](#inspiration-and-resources)
+- [Deployment](#deployment)
+- [License](#license)
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/8f548bae-7772-48ed-8e8e-022259c12f8a)
 
+## Demo
 
-## Overview
-
-This doc outlines the functionality of my Expense Tracker Application. The application, which is created for expense tracking, is nicely designed to provide a good user interface, store the expenses into Google Sheets, and also to perform some simple budgeting operations using custom as well as external libraries.
-
-## Leading User Stories
-
-As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending. 
-As a user, I want to view a summary of my expenses, so I can understand my financial habits. 
-As a user, I want to set a budget, so I can manage my spending against my financial goals.
+[Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
 
 ## Features
-- Add new expenses.
-- View a summary of expenses.
-- Set and view budgets.
 
-# Strategic Opportunities Roadmap
+- Add new expenses with details like name, amount, date, and category
+- View a summary of expenses, including individual expenses and total amount spent
+- Set and manage budgets to stay within financial goals
+- Store expense data in Google Sheets for easy access and analysis
 
-- Budget Management: Implement budget setting and tracking.
-- Data Analysis Features: Introduce expense categorization and monthly spending trends.
-- Mobile App Development: Expand accessibility with a smartphone application.
+## User Stories
 
-# Errors on issues 
+- As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending.
+- As a user, I want to view a summary of my expenses, so I can understand my financial habits.
+- As a user, I want to set a budget, so I can manage my spending against my financial goals.
 
-- During the development of my application, I accidentally uploaded the creds.json file, which contained sensitive information. Upon realizing the mistake, immediate action was taken to rectify the issue. The file was quickly removed from the repository, and the commit history was purged to ensure that the sensitive information was no longer accessible. I also made sure to look at my .gitignore rules to prevent such incidents in the future. 
+## Future Enhancements
 
-- During the deployment to Heroku, I encountered a challenge related to our requirements.txt file. I discovered that the file was incorrect and did not include several dependencies needed for the application to function properly. This oversight led to deployment failures on Heroku. To address this, I conducted a review of our application's dependencies and updated the requirements.txt file accordingly. This is still something I am working on to get a better understanding on what files are needed and not
+- **Budget Management:** Implement advanced budget setting and tracking features.
+- **Data Analysis:** Introduce expense categorization and monthly spending trend analysis.
+- **Mobile App:** Expand accessibility by developing a smartphone application.
 
-# CI Python Linter
+## Error Handling
+
+During the development of this application, there were a couple of issues encountered:
+- Accidental upload of sensitive information in the `creds.json` file. The file was promptly removed from the repository, and the commit history was purged. The `.gitignore` rules were updated to prevent future incidents.
+- Deployment challenges on Heroku due to an incorrect `requirements.txt` file. The file was reviewed and updated with the necessary dependencies to ensure successful deployment.
+
+## CI Python Linter
+
+The Python code in this project has been validated using a linter to ensure adherence to coding standards and best practices.
+
 - Run.py
-<img width="1239" alt="Screenshot 2024-02-21 at 21 01 42" src="https://github.com/nathan-cool/Tracker/assets/127421398/488f24c8-fc51-499d-8c65-973a635698d3">
--Expenses.py
-<img width="1203" alt="Screenshot 2024-02-21 at 21 03 50" src="https://github.com/nathan-cool/Tracker/assets/127421398/1ce0affd-c864-4776-882a-f8fb76c90f47">
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/cd49179d-ff37-4ec5-afcb-d070631c29ec)
+
+- Expenses.py
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/959770b4-6aaa-4ae2-98f9-5f45eb6b210f)
 
 
 
-# Libraries and functions
+## Libraries and Functions
 
-## gpread: 
+The Expense Tracker Application utilizes the following libraries and functions:
 
-Provides a way to interact with Google Sheets, allowing operations such as reading from and writing to sheets.
+- `gspread`: Provides interaction with Google Sheets, enabling reading from and writing to sheets.
+- `datetime`: Helps in storing and processing expense dates.
+- `google.oauth2.service_account`: Handles authentication for Google Sheets API through a service account.
+- `numpy`: Manages budget calculations and numerical processing.
+- `pandas`: Assists in data manipulation and analysis of expense data.
 
-## datetime: 
+Key functions in the application include:
+- `get_expenses()`: Prompts users to input expense details and validates the input.
+- `write_expense_to_sheet(expense)`: Formats expense details and appends them to the Google Sheet.
+- `read_file_and_summarize()`: Retrieves expense records from the Google Sheet and provides a summary.
+- `set_budget()`: Allows users to input and save a budget amount.
+- `budget(current_spend)`: Compares current spending against the set budget and provides feedback.
 
-This helps in the storage of the date in relation to when the expense is incurred, hence enabling the application to process and store the date.
+## Setup
 
-## get_expenses(): 
+To set up and run the Expense Tracker Application locally, follow these steps:
 
-This function is the primary interface for users to input expense details. It prompts for the expense's name, amount, date, and category. It validates user input, supports a shortcut for the current date (using 't'), and ensures that the date format and category selection adhere to expected formats. After validation, it creates and returns an expense object with the provided details.
+1. Clone the repository:
+   git clone https://github.com/your-username/expense-tracker.git
 
-## write_expense_to_sheet(expense): 
+2. Install the required dependencies:
+pip install -r requirements.txt
 
-After an expense object is created, this function formats the expense details into a suitable format (e.g., converting the date to 'YYYY-MM-DD') and appends the data as a new row in the specified Google Sheet worksheet. This process involves interacting with the Google Sheets API to update the worksheet dynamically.
+3. Set up Google Sheets API credentials and update the `creds.json` file.
 
-## read_file_and_summarize(): 
+4. Run the application:
+python run.py
 
-This function fetches all expense records from the Google Sheet, calculates the total expenses, and prints a summary of individual expenses and the total amount spent. It handles data retrieval and summarization, providing insights into spending patterns and overall financial tracking.
+## Documentation
 
-## set_budget(): 
+The following resources were used as references during the development of this application:
+- Google Sheets API Documentation
+- Gspread GitHub Repository
+- Python Official Documentation
+- Pandas Documentation
+- NumPy Documentation
+- Google OAuth2 Documentation
 
-Allows users to input a budget amount, which the application then saves for future reference. This function is crucial for establishing a financial baseline against which expenses can be compared.
+## Inspiration and Resources
 
-## budget(current_spend): 
+The Expense Tracker Application was inspired by the following resources:
 
-This function compares the current spending (total expenses) against the set budget. It provides feedback based on the comparison, such as alerting the user if spending exceeds the budget, matches the budget, or is within acceptable limits. This feature is essential for financial planning and management, helping users stay within their financial means.
+- Expense Tracker App Tutorial
+- elainebroche-dev/ms3-event-scheduler
 
-## Support Functions
+## Deployment
 
-Beyond the core functionalities, the application includes utility functions like clear() for improving user experience by clearing the console screen, and main(), which serves as the entry point of the application, orchestrating the flow of operations based on user input.
-
-## google.oauth2.service_account: 
-
-It helps in the authentication of any interactivity being undertaken in Google Sheets by the application through the service account in a secure fashion.
-numpy: A powerful numerical processing library, utilized here for managing budget calculations.
-
-# Skeleton
-CLI allows users to choose actions and input data as required.
-
-# Flowchart
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/698e7455-0b2f-43ee-a56d-fc39f6d738de)
-
-# Wireframe
-Wireframe could map out the command line
-
-# Surface
-The CLI's look and feel would be text-based, focusing on readability and ease of use.
-
-# Setup
-
-## Scope: 
-
-This defines the set of URLs through which an application can read and write to Google Sheets and manage files on Google Drive through the Google Sheets and Google Drive APIs.
+The application is deployed on Heroku: [Expense Tracker App](#)
 
 
-# Documentation 
+## License
 
-## Google Sheets API, spread, Pandas and Numpy:
-
-Google Developers documentation for learning to work with Google Sheets. This includes the Google Sheets API documentation.
-
-## Gspread GitHub Repository and Docs 
-
-These guides and examples on using the gspread library to access and edit information in Google Sheets within the context of the Python programming language.
-
-## Python Official Documentation 
-
-These guides and examples provide applications dealing with dates, offering insights into general Python syntax, data types, and functions.
-For data manipulation and analysis
-
-## Pandas Documentation 
-
-for summarizing expense data before presenting it to a user or analyzing expenses for budgeting purposes.
-
-## NumPy Documentation covers numerical operations
-
-## Stack Overflow and Developer Forums
-
-Gave me specific usage of gspread, datetime manipulation, handling Google Sheets API authentication, and data manipulation using pandas.
-For setting up authentication with Google's APIs
-
-## Google OAuth2 Documentation
-
-Guided me on using service account credentials to securely authenticate your application.
-
-## Python tutorials:
-
-Documentation on virtual environments in Python like pip helps me manage project libraries and ensure consistent development environments.
-
-## Youtube tutorials 
-
-The YouTube tutorial here, helped me get the foundations down
-
-https://www.youtube.com/watch?v=HTD86h69PtE&t=2614s&pp=ygUTZXhwZW5zZSB0cmFja2VyIGFwcA%3D%3D
-
-## Repos
-
-Inspiration for certain functions such as the clear() function taken from here 
-
-elainebroche-dev/ms3-event-scheduler
+This project is licensed under the MIT License.
