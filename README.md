@@ -57,6 +57,71 @@ The Python code in this project has been validated using a linter to ensure adhe
 - Expenses.py
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/959770b4-6aaa-4ae2-98f9-5f45eb6b210f)
 
+## Testing
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Test Method</th>
+            <th>Expected Outcome</th>
+            <th>Test Result</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Expense Input Validation</td>
+            <td>Manual Input</td>
+            <td>Only valid numeric values accepted for expense amount; proper date format required</td>
+            <td>Pass</td>
+            <td>Includes testing with both valid and invalid inputs</td>
+        </tr>
+        <tr>
+            <td>Expense Category Selection</td>
+            <td>Manual Testing</td>
+            <td>Correct expense category can be selected from the provided options</td>
+            <td>Pass</td>
+            <td>Tested for all available categories</td>
+        </tr>
+        <tr>
+            <td>Google Sheets Integration</td>
+            <td>Integration Testing, Manual Verification</td>
+            <td>Expenses are correctly appended to the Google Sheet</td>
+            <td>Pass</td>
+            <td>Verifies real-time update to Google Sheets with correct formatting</td>
+        </tr>
+        <tr>
+            <td>Expense Summary Calculation</td>
+            <td>Unit Testing, Manual Checking</td>
+            <td>Total expense calculation matches the sum of individual expenses listed</td>
+            <td>Pass</td>
+            <td>Manual tests ensure accuracy of the sum against a pre-defined dataset</td>
+        </tr>
+        <tr>
+            <td>Budget Setting and Comparison</td>
+            <td>Functional Testing</td>
+            <td>Budget input is saved and correctly compared against current expenses</td>
+            <td>Pass</td>
+            <td>Tests include scenarios of under budget, over budget, and exactly at budget situations</td>
+        </tr>
+        <tr>
+            <td>User Interface and Usability</td>
+            <td>Usability Testing, Feedback Collection</td>
+            <td>Interface is user-friendly and intuitive for new users</td>
+            <td>Pass</td>
+            <td>Based on feedback from a group of first-time users</td>
+        </tr>
+        <tr>
+            <td>Data Persistence and Loading</td>
+            <td>Manual Testing, Stress Testing</td>
+            <td>Application correctly saves and retrieves data from Google Sheets</td>
+            <td>Pass</td>
+            <td>Includes tests for handling large datasets</td>
+        </tr>
+    </tbody>
+</table>
+
 
 
 ## Libraries and Functions
@@ -76,20 +141,39 @@ Key functions in the application include:
 - `set_budget()`: Allows users to input and save a budget amount.
 - `budget(current_spend)`: Compares current spending against the set budget and provides feedback.
 
-## Setup
+## Deployment
+<b> The Expense Tracker Application has been deployed to Heroku. To deploy the application, follow these steps: </b>
 
-To set up and run the Expense Tracker Application locally, follow these steps:
+1. Create a Heroku account and install the Heroku CLI.
+2. Create a `Procfile` with the following line:
+```web: python run.py```
+3. Update the `requirements.txt` file by running:
+```pip freeze > requirements.txt```
+4. Initialize a Git repository and commit the changes.
+5. Create a new Heroku app by running:
+```heroku create your-app-name```
+6. Set up the necessary environment variables in the Heroku app settings.
+7. Push the code to the Heroku remote repository:
+```git push heroku main```
+8. Open the application:
+```heroku open```
 
-1. Clone the repository:
-   git clone https://github.com/your-username/expense-tracker.git
 
-2. Install the required dependencies:
-pip install -r requirements.txt
+These steps outline the basic process for deploying an application to Heroku.
 
-3. Set up Google Sheets API credentials and update the `creds.json` file.
+<b> The Expense Tracker Application has also been deployed to GitHub. To clone this application, follow these steps: </b>
 
-4. Run the application:
-python run.py
+1. Go to [https://github.com/nathan-cool/Tracker](https://github.com/nathan-cool/Tracker) on GitHub.
+2. Click "Code", select HTTPS, and copy the link.
+3. Open a terminal, navigate to the desired directory, and run:
+git clone <copied-url>
+4. Make changes and push them back to the repository by running:
+```git add .```
+```git commit -m "message"```
+```git push```
+
+These steps outline the basic process for cloning this repo
+
 
 ## Documentation
 
@@ -107,11 +191,6 @@ The Expense Tracker Application was inspired by the following resources:
 
 - Expense Tracker App Tutorial
 - elainebroche-dev/ms3-event-scheduler
-
-## Deployment
-
-The application is deployed on Heroku: [Expense Tracker App](#)
-
 
 ## License
 
