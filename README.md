@@ -22,18 +22,52 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 [Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
 
-## Features
-
-- Add new expenses with details like name, amount, date, and category
-- View a summary of expenses, including individual expenses and total amount spent
-- Set and manage budgets to stay within financial goals
-- Store expense data in Google Sheets for easy access and analysis
-
 ## User Stories
 
 - As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending.
 - As a user, I want to view a summary of my expenses, so I can understand my financial habits.
 - As a user, I want to set a budget, so I can manage my spending against my financial goals.
+
+## Features
+
+- __F1 Expense Details__
+
+- Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/dc7a854e-c327-4a5e-8c9f-8b873f7f2d4f)
+
+
+- __F2 Categorisation__
+
+- Expenses can be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/15d0d7ec-654d-449a-9fb4-0457eccdef15)
+
+
+- __F3 Google Sheets Integration__
+
+- The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3)
+
+
+- __F4 budget Management__
+  
+- Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/b2f23e65-4dbe-4a86-a760-2acd8aad19b3)
+
+
+- __F5 User-Friendly Interface__
+  
+-  The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/da0faf24-c018-43a7-917f-0514a7380d63)
+
+
+- __Data Persistence__
+
+- By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
 
 ## Future Enhancements
 
