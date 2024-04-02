@@ -70,6 +70,9 @@ This Expense Tracker Application is designed to help users track their expenses,
 
   &#9672; By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
 
+  ![image](https://github.com/nathan-cool/Tracker/assets/127421398/10f4cc5b-7d34-477f-bda3-d6941e8c44e8)
+
+
 
 
 ## Future Enhancements
@@ -78,11 +81,14 @@ This Expense Tracker Application is designed to help users track their expenses,
 - **Data Analysis:** Introduce expense categorization and monthly spending trend analysis.
 - **Mobile App:** Expand accessibility by developing a smartphone application.
 
-## Error Handling
+## Testing
+
+## Errors that occured during development
 
 During the development of this application, there were a couple of issues encountered:
 - Accidental upload of sensitive information in the `creds.json` file. The file was promptly removed from the repository, and the commit history was purged. The `.gitignore` rules were updated to prevent future incidents.
 - Deployment challenges on Heroku due to an incorrect `requirements.txt` file. The file was reviewed and updated with the necessary dependencies to ensure successful deployment.
+- 
 
 ## CI Python Linter
 
