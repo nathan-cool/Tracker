@@ -10,7 +10,6 @@ This Expense Tracker Application is designed to help users track their expenses,
 - [Error Handling](#error-handling)
 - [CI Python Linter](#ci-python-linter)
 - [Libraries and Functions](#libraries-and-functions)
-- [Setup](#setup)
 - [Documentation](#documentation)
 - [Inspiration and Resources](#inspiration-and-resources)
 - [Deployment](#deployment)
@@ -27,47 +26,51 @@ This Expense Tracker Application is designed to help users track their expenses,
 - As a user, I want to easily input my daily expenses, so I can keep accurate track of my spending.
 - As a user, I want to view a summary of my expenses, so I can understand my financial habits.
 - As a user, I want to set a budget, so I can manage my spending against my financial goals.
+- As a user, I want the application to store my budget persistently, so I don't have to set it every time I use the application.
+- As a user, I want to see my total expenses calculated automatically, so I can quickly gauge my overall spending without manual calculations.
 
 ## Features
 
 - __F1 Expense Details__
 
-- Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
+  &#9672; Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/dc7a854e-c327-4a5e-8c9f-8b873f7f2d4f)
 
 
 - __F2 Categorisation__
 
-- Expenses can be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
+  &#9672; Expenses can be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/15d0d7ec-654d-449a-9fb4-0457eccdef15)
 
 
 - __F3 Google Sheets Integration__
 
-- The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
+  &#9672; The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3)
 
 
 - __F4 budget Management__
   
-- Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
+  &#9672; Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/b2f23e65-4dbe-4a86-a760-2acd8aad19b3)
 
 
 - __F5 User-Friendly Interface__
   
--  The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
+  &#9672; The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
 
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/da0faf24-c018-43a7-917f-0514a7380d63)
 
 
 - __Data Persistence__
 
-- By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
+  &#9672; By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
+
+
 
 ## Future Enhancements
 
@@ -176,7 +179,20 @@ Key functions in the application include:
 - `budget(current_spend)`: Compares current spending against the set budget and provides feedback.
 
 ## Deployment
-<b> The Expense Tracker Application has been deployed to Heroku. To deploy the application, follow these steps: </b>
+
+### Cloning this repo 
+
+1. Go to [https://github.com/nathan-cool/Tracker](https://github.com/nathan-cool/Tracker) on GitHub.
+2. Click "Code", select HTTPS, and copy the link.
+3. Open a terminal, navigate to the desired directory, and run:
+git clone <copied-url>
+4. Make changes and push them back to the repository by running:
+```git add .```
+```git commit -m "message"```
+```git push```
+
+
+### Deploying the Expense Tracker Application to Heroku
 
 1. Create a Heroku account and install the Heroku CLI.
 2. Create a `Procfile` with the following line:
@@ -193,20 +209,35 @@ Key functions in the application include:
 ```heroku open```
 
 
-These steps outline the basic process for deploying an application to Heroku.
 
-<b> The Expense Tracker Application has also been deployed to GitHub. To clone this application, follow these steps: </b>
+### Creating Google Spreadsheet and APIs
 
-1. Go to [https://github.com/nathan-cool/Tracker](https://github.com/nathan-cool/Tracker) on GitHub.
-2. Click "Code", select HTTPS, and copy the link.
-3. Open a terminal, navigate to the desired directory, and run:
-git clone <copied-url>
-4. Make changes and push them back to the repository by running:
-```git add .```
-```git commit -m "message"```
-```git push```
+1. Access the Google Cloud Platform and create a new project.
 
-These steps outline the basic process for cloning this repo
+2. Navigate to 'APIs and Services' > 'Library' and search for the Google Drive API. Enable it.
+
+3. Click 'Create Credentials' and select 'Google Drive API' as the credential type.
+
+4. Choose 'Application Data' and 'No' for using the API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions.
+
+5. Create a service account with a name and grant it the 'Basic -> Editor' role.
+
+6. Go to the service account configuration page and click on the KEYS tab.
+
+7. Add a new key by selecting 'Create New Key' and choose the JSON format.
+
+8. Rename the downloaded JSON file to 'creds.json' and copy it into your local project directory.
+
+9. Log in to your Google account or create one if needed.
+
+10. Create a new Google Spreadsheet named 'Expenses' on Google Drive.
+
+11. Add the following headings in row 1:
+ - name
+ - category
+ - amount
+ - date
+
 
 
 ## Documentation
