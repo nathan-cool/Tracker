@@ -83,14 +83,14 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 ## Testing
 
-## Errors that occured during development
+### Errors that occurred during development
 
 During the development of this application, there were a couple of issues encountered:
 - Accidental upload of sensitive information in the `creds.json` file. The file was promptly removed from the repository, and the commit history was purged. The `.gitignore` rules were updated to prevent future incidents.
 - Deployment challenges on Heroku due to an incorrect `requirements.txt` file. The file was reviewed and updated with the necessary dependencies to ensure successful deployment.
 - 
 
-## CI Python Linter
+### CI Python Linter
 
 The Python code in this project has been validated using a linter to ensure adherence to coding standards and best practices.
 
@@ -100,7 +100,7 @@ The Python code in this project has been validated using a linter to ensure adhe
 - Expenses.py
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/959770b4-6aaa-4ae2-98f9-5f45eb6b210f)
 
-## Testing
+### Bug testing
 
 <table>
     <thead>
