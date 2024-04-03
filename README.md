@@ -167,7 +167,13 @@ The Python code in this project has been validated using a linter to ensure adhe
 
 
 
-## Libraries and Functions
+## Technology
+
+### Languages Used
+
+Python 3.12.2
+
+### Libraries
 
 The Expense Tracker Application utilizes the following libraries and functions:
 
@@ -176,6 +182,8 @@ The Expense Tracker Application utilizes the following libraries and functions:
 - `google.oauth2.service_account`: Handles authentication for Google Sheets API through a service account.
 - `numpy`: Manages budget calculations and numerical processing.
 - `pandas`: Assists in data manipulation and analysis of expense data.
+
+### Functions
 
 Key functions in the application include:
 - `get_expenses()`: Prompts users to input expense details and validates the input.
