@@ -75,13 +75,13 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 
 
-## Future Enhancements
+### Future Enhancements
 
 - **Budget Management:** Implement advanced budget setting and tracking features.
 - **Data Analysis:** Introduce expense categorization and monthly spending trend analysis.
 - **Mobile App:** Expand accessibility by developing a smartphone application.
 
-## Testing
+## Testing and Errors
 
 ### Errors that occurred during development
 
