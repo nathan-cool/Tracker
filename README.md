@@ -15,7 +15,8 @@ This Expense Tracker Application is designed to help users track their expenses,
 - [Deployment](#deployment)
 - [License](#license)
 
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/8f548bae-7772-48ed-8e8e-022259c12f8a)
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/9ad6369f-f1ec-45ba-8b3f-37cf002472b8)
+
 
 ## Demo
 
@@ -31,51 +32,90 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 ## Features
 
-- __F1 Expense Details__
+### F5 User-Friendly Interface
 
-  &#9672; Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
+- The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
 
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/dc7a854e-c327-4a5e-8c9f-8b873f7f2d4f)
-
-
-- __F2 Categorisation__
-
-  &#9672; Expenses can be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
-
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/15d0d7ec-654d-449a-9fb4-0457eccdef15)
-
-
-- __F3 Google Sheets Integration__
-
-  &#9672; The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
-
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3)
-
-
-- __F4 budget Management__
+<div align="center">
   
-  &#9672; Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
-
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/b2f23e65-4dbe-4a86-a760-2acd8aad19b3)
-
-
-- __F5 User-Friendly Interface__
-  
-  &#9672; The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
-
 ![image](https://github.com/nathan-cool/Tracker/assets/127421398/da0faf24-c018-43a7-917f-0514a7380d63)
 
+</div>
 
-- __Data Persistence__
+### F1 Expense Details
 
-  &#9672; By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
+- Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
 
-  ![image](https://github.com/nathan-cool/Tracker/assets/127421398/10f4cc5b-7d34-477f-bda3-d6941e8c44e8)
+#### Descriptions
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/306c4476-c577-499a-a693-8c72cbab1cbf)
+
+</div>
+
+#### Amounts
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/a9258e26-7597-4b41-8f58-c4e88ea3b0b3)
+
+</div>
+
+#### Dates
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/3cf57349-a0dc-473a-a138-a6331d7b1b06)
+
+</div>
+
+### F2 Categorisation
+
+- Expenses can also be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/15d0d7ec-654d-449a-9fb4-0457eccdef15)
+
+</div>
+
+### F3 Google Sheets Integration
+
+- The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3)
+
+</div>
+
+### F4 Budget Management
+
+- Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/70777ad8-2d04-44f2-9b67-4278c8c4e01a)
+
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/853965cb-23bb-457b-b5ad-78531563fe4a)
+
+</div>
+
+### Data Persistence
+
+- By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
+
+<div align="center">
+  
+![image](https://github.com/nathan-cool/Tracker/assets/127421398/10f4cc5b-7d34-477f-bda3-d6941e8c44e8)
+
+</div>
 
 
 
 
-### Future Enhancements
+### Future Feature Enhancements
 
 - **Budget Management:** Implement advanced budget setting and tracking features.
 - **Data Analysis:** Introduce expense categorization and monthly spending trend analysis.
