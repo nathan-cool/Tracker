@@ -1,12 +1,13 @@
-# Expense Tracker
+<h1 align="center"> Expense Tracker </h1>
+
+[Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
+
 
 This Expense Tracker Application is designed to help users track their expenses, store them in Google Sheets, and perform simple budgeting operations using custom and external libraries. The application provides a user-friendly interface for easy expense management.
 
 ## Table of Contents
-- [Demo](#demo)
-- [Features](#features)
 - [User Stories](#user-stories)
-- [Future Enhancements](#future-feature-enhancements)
+- [Features](#features)
 - [Testing and Errors](#testing-and-errors)
 - [Technology](#technology)
 - [Deployment](#deployment)
@@ -14,12 +15,6 @@ This Expense Tracker Application is designed to help users track their expenses,
 - [Inspiration and Resources](#inspiration-and-resources)
 - [License](#license)
 
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/9ad6369f-f1ec-45ba-8b3f-37cf002472b8)
-
-
-## Demo
-
-[Please use the app here](https://expenesestracker-8fe77bed1a01.herokuapp.com/)
 
 ## User Stories
 
@@ -35,9 +30,14 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 - The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
 
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/4cb361f1-c96a-499c-a879-9d8715ef82dd" width="600" height="400"> 
+
+</div>
+
+- Example of some error messaging
+
 <div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/da0faf24-c018-43a7-917f-0514a7380d63)
+<img src="https://github.com/nathan-cool/Tracker/assets/127421398/0ed4545d-cdf3-408c-954e-73f23d8e3544" width="600" height="80"> 
 
 </div>
 
@@ -47,69 +47,54 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 #### Descriptions
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/306c4476-c577-499a-a693-8c72cbab1cbf)
-
-</div>
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/306c4476-c577-499a-a693-8c72cbab1cbf" width="600" height="400"> </div>
 
 #### Amounts
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/a9258e26-7597-4b41-8f58-c4e88ea3b0b3)
-
-</div>
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/a9258e26-7597-4b41-8f58-c4e88ea3b0b3" width="600" height="400"> </div>
 
 #### Dates
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/3cf57349-a0dc-473a-a138-a6331d7b1b06)
-
-</div>
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/3cf57349-a0dc-473a-a138-a6331d7b1b06" width="600" height="400"> </div>
 
 ### F2 Categorisation
 
 - Expenses can also be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/15d0d7ec-654d-449a-9fb4-0457eccdef15)
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/702ce7d7-a7f3-4655-88b2-bfbd2d9adc30" width="600" height="400"> </div>
 
-</div>
+
+
 
 ### F3 Google Sheets Integration
 
 - The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3)
-
-</div>
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3" width="600" height="80"> </div>
 
 ### F4 Budget Management
 
 - Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/70777ad8-2d04-44f2-9b67-4278c8c4e01a)
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/70777ad8-2d04-44f2-9b67-4278c8c4e01a" width="600" height="100"> </div>
 
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/853965cb-23bb-457b-b5ad-78531563fe4a)
+- When you view all the expenses entered, you will be able to retrieve all this information.
 
-</div>
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/853965cb-23bb-457b-b5ad-78531563fe4a" width="600" height="100"> </div>
+
+
 
 ### Data Persistence
 
 - By utilizing Google Sheets, the application ensures that all expense records are saved and can be easily retrieved for review and analysis.
 
-<div align="center">
-  
-![image](https://github.com/nathan-cool/Tracker/assets/127421398/10f4cc5b-7d34-477f-bda3-d6941e8c44e8)
-
+<div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/50932ff7-bcf6-455f-bab4-cb6ffd92eaac" width="600" height="400"> 
 </div>
+
+<div align="center"> 
+<img src="https://github.com/nathan-cool/Tracker/assets/127421398/33f90182-f5bb-41fc-8427-9a4faa9f7028" width="600" height="400">
+</div>
+
 
 
 
@@ -127,7 +112,7 @@ This Expense Tracker Application is designed to help users track their expenses,
 During the development of this application, there were a couple of issues encountered:
 - Accidental upload of sensitive information in the `creds.json` file. The file was promptly removed from the repository, and the commit history was purged. The `.gitignore` rules were updated to prevent future incidents.
 - Deployment challenges on Heroku due to an incorrect `requirements.txt` file. The file was reviewed and updated with the necessary dependencies to ensure successful deployment.
-- 
+
 
 ### CI Python Linter
 
