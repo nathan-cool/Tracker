@@ -35,35 +35,51 @@ def get_expenses():
     """Prompt user for expense details, validate input,
     and return a new expense object."""
     clear()
-    expense_name = input("Please enter expense description:")
-
+    while True:
+        try:
+            expense_name = input("Please enter expense description:")
+            if expense_name.strip():
+                break
+            else:
+                clear()
+                console.print('Invalid entry. Please enter a description',
+                            style="bold red")
+        except ValueError:
+            clear()
+            console.print('Invalid entry. Please enter a description.',
+                          style="bold red")
+        
+    clear()
     while True:
         try:
             expense_amount = float(input("Enter expense amount: €").strip())
-            break
+            if expense_amount > 0:
+                break
+            else:
+                clear()
+                console.print("Invalid entry. Please enter positive values only.",
+                              style="bold red")
         except ValueError:
             clear()
-            console.print('Invalid entry. Please enter numeric values only.',
+            console.print("Invalid entry. Please enter numeric values only.",
                           style="bold red")
-    clear()
     while True:
-        try:
             expense_date = input("Please use DD-MM-YYYY or press 't' for"
-                                 "todays date:").strip()
+                                 " todays date:").strip()
             if expense_date.lower() in ('t', 'T'):
                 expense_date = datetime.datetime.now().date()
+                break
             else:
-                expense_date = datetime.datetime.strptime
-                (expense_date, '%d-%m-%Y').date()
-
-            break
-        except ValueError:
-            clear()
-            console.print("Invalid date format."
-                          "Please use DD-MM-YYYY or 't'.", style="bold red")
+                try:
+                    expense_date = datetime.datetime.strptime(
+                    expense_date, '%d-%m-%Y').date()
+                    break
+                except ValueError:
+                    clear()
+                    console.print("Invalid date format."
+                                "Please use DD-MM-YYYY or 't'.", style="bold red")
     clear()
     while True:
-        try:
             expense_categories = ["Housing", "Transportation", "Food",
                                   "Utilities", "Misc"]
             print("Pick a category: ")
@@ -72,27 +88,20 @@ def get_expenses():
                 print(f"  {i + 1}. {category_name}")
 
             range_list = f"[1 - {len(expense_categories)}]"
-
-            selected_category = int(input(f"Please choose a"
-                                          "category {range_list}: ")) - 1
-
-            if selected_category in range(len(expense_categories)):
-                category = expense_categories[selected_category]
-                new_expense = expense(expense_name, category,
-                                      expense_amount, expense_date)
-
-                return new_expense
-            else:
+               
+            try:
+                selected_category = int(input(f"Please choose a category {range_list}: ")) - 1
+                if 0 <= selected_category < len(expense_categories):
+                    category = expense_categories[selected_category]
+                    new_expense = expense(expense_name, category, expense_amount, expense_date)
+                    return new_expense
+                else:
+                    clear()
+                    console.print(f"Invalid selection. Please choose a number between 1 and {len(expense_categories)}.",
+                                style="bold red")
+            except ValueError:
                 clear()
-                console.print(f"Invalid selection."
-                              "Please choose a number"
-                              "between 1 and {len(expense_categories)}.",
-                              style="bold red")
-        except ValueError:
-            clear()
-            console.print("Invalid input. Please enter a number.",
-                          style="bold red")
-
+                console.print("Invalid input. Please enter a valid number.", style="bold red")
 
 def write_expense_to_sheet(expense):
     """Save the given expense object to the Google Sheet."""
