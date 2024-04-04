@@ -103,17 +103,29 @@ def get_expenses():
                 clear()
                 console.print("Invalid input. Please enter a valid number.", style="bold red")
 
+
 def write_expense_to_sheet(expense):
     """Save the given expense object to the Google Sheet."""
     clear()
     print(f"Saving expense: {expense} to Google Sheets")
     expense_date_str = expense.date.strftime('%Y-%m-%d')
-    WORKSHEET.append_row([expense.name, expense.amount, expense.category,
-                         expense_date_str])
-
-    time.sleep(0.15)
-    print("\n")
-    console.print("Expense saved", style="green")
+    try:
+        WORKSHEET.append_row(
+            [
+                expense.name,
+                expense.category,
+                expense.amount,
+                expense_date_str,
+            ]
+        )
+        time.sleep(0.15)
+        print("\n")
+        console.print("Expense saved", style="green")
+    except gspread.exceptions.APIError as e:
+        console.print("Error saving expense. Please try again later.",
+                      style="bold red")
+    except Exception as e:
+        console.print(f"An error occurred: {e}", style="bold red")
     print("\n")
 
 
@@ -169,13 +181,22 @@ def set_budget():
             clear()
             console.print("Invalid input. Please enter a number.\n",
                           style="bold red")
+        except Exception as e:
+            clear()
+            console.print(f"An error occurred: {e}", style="bold red")
 
 
 def budget(current_spend):
     """Compares the current spend against the saved budget and prints
     a message indicating the status."""
-
-    budget = np.load("budget.npy")
+    try:
+        budget = np.load("budget.npy")
+    except FileNotFoundError:
+        console.print("Error, No file found", style="bold red")
+        budget = 0.0
+    except Exception as e:
+        console.print(f"An error occurred: {e}", style="bold red")
+        budget = 0.0
 
     if current_spend > budget:
         console.print(f"The amount exceeds the budget of {budget}",
@@ -228,7 +249,7 @@ def main():
             break
         else:
             console.print("Error: Invalid input. Please enter a number"
-                          "between 1 - 4", style="bold red")
+                          " between 1 - 4", style="bold red")
 
 
 if __name__ == "__main__":
