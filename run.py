@@ -38,8 +38,11 @@ def get_expenses():
     while True:
         try:
             expense_name = input("Please enter expense description:")
+            
+            
             if expense_name.strip():
                 break
+            
             else:
                 clear()
                 console.print('Invalid entry. Please enter a description',
@@ -172,11 +175,18 @@ def set_budget():
         print("\n")
         try:
             budget_input = input("Please enter a budget:€").strip()
+            budget_value = float(budget_input)
 
-            np.save("budget.npy", float(budget_input))
-            clear()
-            console.print(f"Budget €{budget_input} saved...", style="green")
-            break
+            if budget_value <= 0:
+                clear()
+                console.print("Invalid input. Please enter a positive number.",
+                              style="bold red")
+            else:
+                np.save("budget.npy", budget_value)
+                clear()
+                console.print(f"Budget €{budget_input} saved...", style="green")
+                break
+
         except ValueError:
             clear()
             console.print("Invalid input. Please enter a number.\n",
