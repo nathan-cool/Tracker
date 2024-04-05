@@ -26,7 +26,7 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 ## Features
 
-### F5 User-Friendly Interface
+### User-Friendly Interface
 
 - The application features a clear and intuitive user interface with simple prompts and error messages to guide users through expense recording and management.
 
@@ -41,7 +41,7 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 </div>
 
-### F1 Expense Details
+### Expense Details
 
 - Users can input descriptions, amounts, and dates for their expenses. Dates can be entered in the DD-MM-YYYY format or using 't' for the current date.
 
@@ -57,7 +57,7 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 <div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/3cf57349-a0dc-473a-a138-a6331d7b1b06" width="600" height="400"> </div>
 
-### F2 Categorisation
+### Categorisation
 
 - Expenses can also be categorized into predefined categories like Housing, Transportation, Food, Utilities, and Miscellaneous, allowing for better organization and analysis.
 
@@ -66,13 +66,13 @@ This Expense Tracker Application is designed to help users track their expenses,
 
 
 
-### F3 Google Sheets Integration
+### Google Sheets Integration
 
 - The application seamlessly integrates with Google Sheets, automatically appending new expenses to a specified worksheet for centralized data storage and easy access.
 
 <div align="center"> <img src="https://github.com/nathan-cool/Tracker/assets/127421398/7e5330b9-dd73-459e-9b80-580de1527cf3" width="600" height="80"> </div>
 
-### F4 Budget Management
+### Budget Management
 
 - Users can set a budget and receive visual feedback on their spending status (within budget, at budget limit, or exceeding budget) to make informed financial decisions.
 
@@ -112,6 +112,7 @@ This Expense Tracker Application is designed to help users track their expenses,
 During the development of this application, there were a couple of issues encountered:
 - Accidental upload of sensitive information in the `creds.json` file. The file was promptly removed from the repository, and the commit history was purged. The `.gitignore` rules were updated to prevent future incidents.
 - Deployment challenges on Heroku due to an incorrect `requirements.txt` file. The file was reviewed and updated with the necessary dependencies to ensure successful deployment.
+  
 
 
 ### CI Python Linter
